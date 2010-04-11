@@ -9,4 +9,6 @@ public interface ButtonPanelListener {
 	void openFolder();
 
 	void storeImages();
+
+	void showSettings();
 }

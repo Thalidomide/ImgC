@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.util.List;
@@ -23,32 +24,40 @@ import util.Manager;
  * @author Olav Jensen
  * @since 08.apr.2010
  */
-public class MainFrame extends JFrame implements ButtonPanelListener, StatusListener, MessageListener {
+public class MainFrame extends JFrame implements ButtonPanelListener, StatusListener, MessageListener, SettingsListener {
 
 	private StatusPanel statusPanel;
 	private ImagePairsResultPanel resultPanel;
 	private ButtonPanel buttonPanel;
 	private String path;
 
-	private JPanel mainContent;
-	private JPanel settignsContent;
+	private JPanel content;
+
+	private ViewMode viewMode;
 
 	public MainFrame() throws HeadlessException {
 		setSize(Constants.SIZE);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(0, 0);
 
-		mainContent = new JPanel(new BorderLayout());
+		JPanel mainContent = new JPanel(new BorderLayout());
 
 		statusPanel = new StatusPanel();
 		resultPanel = new ImagePairsResultPanel();
 		buttonPanel = new ButtonPanel(this);
+		SettingsPanel settingsContent = new SettingsPanel(this);
 
 		mainContent.add(buttonPanel, BorderLayout.NORTH);
 		mainContent.add(resultPanel, BorderLayout.CENTER);
 		mainContent.add(statusPanel, BorderLayout.SOUTH);
 
-		getContentPane().add(mainContent);
+		content = new JPanel(new CardLayout());
+		getContentPane().add(content);
+
+		content.add(mainContent, ViewMode.main.name());
+		content.add(settingsContent, ViewMode.settings.name());
+
+		showMainView();
 
 		Manager.get().setMessageListener(this);
 		Manager.get().setStatusHandler(new StatusHandler(this));
@@ -106,5 +115,32 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 	public void statusChanged(StatusType statusType, String description) {
 		statusPanel.updateStatus(statusType, description);
 		buttonPanel.setButtonsEnabled(statusType.isGuiEnabled());
+	}
+
+	@Override
+	public void showSettings() {
+		viewMode = ViewMode.settings;
+		updateView();
+	}
+
+	@Override
+	public void saveSettings() {
+		//TODO Implement: update images if folder selected...++
+		showMainView();
+	}
+
+	@Override
+	public void cancelSettings() {
+		showMainView();
+	}
+
+	private void showMainView() {
+		viewMode = ViewMode.main;
+		updateView();
+	}
+
+	private void updateView() {
+		CardLayout cardLayout = (CardLayout) content.getLayout();
+		cardLayout.show(content, viewMode.name());
 	}
 }

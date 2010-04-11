@@ -3,10 +3,7 @@ package gui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-
-import util.Manager;
 
 /**
  * @author Olav Jensen
@@ -18,7 +15,6 @@ public class ButtonPanel extends JPanel {
 	private JButton openFolder;
 	private JButton saveImages;
 	private JButton settings;
-	private JCheckBox reversedImageOrder;
 
 	private boolean saveButtonEnabled;
 
@@ -28,13 +24,12 @@ public class ButtonPanel extends JPanel {
 		add(getOpenFolder());
 		add(getSaveImages());
 		add(getSettings());
-		add(getReversedImageOrder());
 	}
 
 	public void setButtonsEnabled(boolean enabled) {
 		openFolder.setEnabled(enabled);
 		saveImages.setEnabled(enabled && saveButtonEnabled);
-		reversedImageOrder.setEnabled(enabled);
+		settings.setEnabled(enabled);
 	}
 
 	public void setSaveButtonEnabled(boolean enabled) {
@@ -72,22 +67,10 @@ public class ButtonPanel extends JPanel {
 		settings.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				SettingsFrame settingsFrame = new SettingsFrame();
-				settingsFrame.setVisible(true);
+				listener.showSettings();
 			}
 		});
 
 		return settings;
-	}
-
-	private JCheckBox getReversedImageOrder() {
-		reversedImageOrder = new JCheckBox("Reverse left/right");
-		reversedImageOrder.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				Manager.get().setLeftRightReversed(reversedImageOrder.isSelected());
-			}
-		});
-		return reversedImageOrder;
 	}
 }
