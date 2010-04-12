@@ -26,33 +26,33 @@ public class UtilTest extends TestCase {
 	}
 
 	public void testIsValidLeftRightImage() {
-		assertNotNull(Util.getLeftImageName("My image_l"));
-		assertNotNull(Util.getLeftImageName("My image _L"));
+		assertNotNull(Util.getImageNameWithoutPostfix("My image_l", 0));
+		assertNotNull(Util.getImageNameWithoutPostfix("My image _L", 0));
 
-		assertNotNull(Util.getRightImageName("My image _r"));
-		assertNotNull(Util.getRightImageName("My image _R"));
+		assertNotNull(Util.getImageNameWithoutPostfix("My image _r", 1));
+		assertNotNull(Util.getImageNameWithoutPostfix("My image _R", 1));
 
 		// Not valid files
-		assertNull(Util.getLeftImageName("asdf"));
-		assertNull(Util.getLeftImageName("asdf _l "));
+		assertNull(Util.getImageNameWithoutPostfix("asdf", 0));
+		assertNull(Util.getImageNameWithoutPostfix("asdf _l ", 0));
 
-		assertNull(Util.getRightImageName("asdf"));
-		assertNull(Util.getRightImageName("asdf _Rd"));
+		assertNull(Util.getImageNameWithoutPostfix("asdf", 1));
+		assertNull(Util.getImageNameWithoutPostfix("asdf _Rd", 1));
 	}
 
 	public void testGetImageNames() {
-		assertEquals("Image 1", Util.getLeftImageName("Image 1_l"));
-		assertEquals("Image 1", Util.getLeftImageName("Image 1 _L"));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1_l", 0));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _L", 0));
 
-		assertEquals("Image 1", Util.getRightImageName("Image 1 _r"));
-		assertEquals("Image 1", Util.getRightImageName("Image 1  _R"));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _r", 1));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1  _R", 1));
 
 		// Test with new postfix
-		Constants.RIGHT_IMAGE_POSTFIXES.add("[RIGHT]");
+		Constants.IMAGE_POSTFIXES.get(1).add("[RIGHT]");
 
-		assertEquals("My image", Util.getRightImageName("My image [RIGHT]"));
+		assertEquals("My image", Util.getImageNameWithoutPostfix("My image [RIGHT]", 1));
 
-		assertEquals(null, Util.getRightImageName("My image [RIGHT]q"));
+		assertEquals(null, Util.getImageNameWithoutPostfix("My image [RIGHT]q", 1));
 	}
 
 	public void testGetFileNameWithoutEnding() {

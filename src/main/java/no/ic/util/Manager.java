@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import engine.EngineMode;
+import engine.EngineSettings;
 import gui.PreviewFrame;
 import status.MessageListener;
 import status.StatusHandler;
@@ -17,13 +17,14 @@ public class Manager {
 
 	private static Manager instance;
 
-	private boolean leftRightReversed;
 	private StatusHandler statusHandler;
 	private MessageListener messageListener;
 	private PreviewFrame previewFrame;
-	private EngineMode engineMode = EngineMode.composite;
+
+	private final EngineSettings engineSettings;
 
 	private Manager() {
+		engineSettings = new EngineSettings();
 	}
 
 	public static Manager get() {
@@ -33,12 +34,8 @@ public class Manager {
 		return instance;
 	}
 
-	public boolean isLeftRightReversed() {
-		return leftRightReversed;
-	}
-
-	public void setLeftRightReversed(boolean leftRightReversed) {
-		this.leftRightReversed = leftRightReversed;
+	public EngineSettings getEngineSettings() {
+		return engineSettings;
 	}
 
 	public StatusHandler getStatusHandler() {
@@ -71,13 +68,5 @@ public class Manager {
 		previewFrame.setTitle(title);
 		previewFrame.setVisible(true);
 		previewFrame.displayImage(image);
-	}
-
-	public EngineMode getEngineMode() {
-		return engineMode;
-	}
-
-	public void setEngineMode(EngineMode engineMode) {
-		this.engineMode = engineMode;
 	}
 }

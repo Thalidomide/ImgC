@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entities.ImageComponent;
-import entities.ImagePair;
+import entities.ImageUnit;
 import junit.framework.TestCase;
 
 /**
@@ -14,12 +14,14 @@ import junit.framework.TestCase;
 public class ImageCompositorTest extends TestCase {
 
 	public void testGetImagePairs() {
+		ImageCompositor imageCompositor = new ImageCompositor();
+
 		List<ImageComponent> components = new ArrayList<ImageComponent>();
-		ImageComponent img1L = new ImageComponent(null, "Image 1", true);
-		ImageComponent img1R = new ImageComponent(null, "Image 1", false);
-		ImageComponent imgSingle = new ImageComponent(null, "SingleImage", true);
-		ImageComponent img2L = new ImageComponent(null, "Image 2", true);
-		ImageComponent img2R = new ImageComponent(null, "Image 2", false);
+		ImageComponent img1L = new ImageComponent(null, "Image 1", 0);
+		ImageComponent img1R = new ImageComponent(null, "Image 1", 1);
+		ImageComponent imgSingle = new ImageComponent(null, "SingleImage", 0);
+		ImageComponent img2L = new ImageComponent(null, "Image 2", 0);
+		ImageComponent img2R = new ImageComponent(null, "Image 2", 1);
 
 		components.add(img1L);
 		components.add(img1R);
@@ -27,16 +29,16 @@ public class ImageCompositorTest extends TestCase {
 		components.add(img2L);
 		components.add(img2R);
 
-		List<ImagePair> pairs = ImageCompositor.getPairs(components);
+		List<ImageUnit> units = imageCompositor.getPairs(components);
 
-		assertEquals(2, pairs.size());
+		assertEquals(2, units.size());
 
-		ImagePair pair = pairs.get(0);
-		assertEquals(img1L, pair.getLeftImage());
-		assertEquals(img1R, pair.getRightImage());
+		ImageUnit unit = units.get(0);
+		assertEquals(img1L, unit.getImageComponent(0));
+		assertEquals(img1R, unit.getImageComponent(1));
 
-		pair = pairs.get(1);
-		assertEquals(img2L, pair.getLeftImage());
-		assertEquals(img2R, pair.getRightImage());
+		unit = units.get(1);
+		assertEquals(img2L, unit.getImageComponent(0));
+		assertEquals(img2R, unit.getImageComponent(1));
 	}
 }

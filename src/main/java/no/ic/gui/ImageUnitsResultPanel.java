@@ -10,20 +10,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import entities.ImagePair;
+import entities.ImageUnit;
 import util.Constants;
 
 /**
  * @author Olav Jensen
  * @since 09.apr.2010
  */
-public class ImagePairsResultPanel extends JPanel {
+public class ImageUnitsResultPanel extends JPanel {
 
-	private List<ImagePair> pairs = new ArrayList<ImagePair>();
+	private List<ImageUnit> units = new ArrayList<ImageUnit>();
 	private JPanel resultPanel;
 	private JLabel resultLabel;
 
-	public ImagePairsResultPanel() {
+	public ImageUnitsResultPanel() {
 		super(new BorderLayout());
 
 		resultLabel = new JLabel("No images loaded.");
@@ -46,18 +46,18 @@ public class ImagePairsResultPanel extends JPanel {
 		super.paint(g);
 	}
 
-	public void setPairs(List<ImagePair> pairs) {
-		this.pairs = pairs;
+	public void setPairs(List<ImageUnit> units) {
+		this.units = units;
 		resultPanel.removeAll();
-		if (pairs.isEmpty()) {
+		if (units.isEmpty()) {
 			updateResultLabel();
 		}
 
 		int index = 0;
-		for (ImagePair pair : pairs) {
-			ImagePairPanel pairPanel = new ImagePairPanel(pair, index);
-			pairPanel.setBackground(index % 2 == 0 ? Constants.EVEN_ROW : Constants.ODD_ROW);
-			resultPanel.add(pairPanel);
+		for (ImageUnit unit : units) {
+			ImageUnitPanel unitPanel = new ImageUnitPanel(unit, index);
+			unitPanel.setBackground(index % 2 == 0 ? Constants.EVEN_ROW : Constants.ODD_ROW);
+			resultPanel.add(unitPanel);
 			index++;
 		}
 
@@ -65,17 +65,17 @@ public class ImagePairsResultPanel extends JPanel {
 		updateResultLabel();
 	}
 
-	public List<ImagePair> getPairs() {
-		return pairs;
+	public List<ImageUnit> getPairs() {
+		return units;
 	}
 
 	private void updateResultLabel() {
 		String text;
 
-		if (pairs.isEmpty()) {
-			text = "No image pairs found.";
+		if (units.isEmpty()) {
+			text = "No image units found.";
 		} else {
-			text = "Found " + pairs.size() + " image pairs.";
+			text = "Found " + units.size() + " image units.";
 		}
 
 		resultLabel.setText(text);

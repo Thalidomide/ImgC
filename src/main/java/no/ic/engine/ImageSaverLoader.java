@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import javax.imageio.ImageIO;
 
-import entities.ImagePair;
+import entities.ImageUnit;
 import status.MessageListener;
 import util.Manager;
 
@@ -17,17 +17,17 @@ import util.Manager;
  */
 public class ImageSaverLoader {
 
-	public static void saveImagePairs(List<ImagePair> pairs, String path) {
+	public static void saveImageUnits(List<ImageUnit> units, String path) {
 		MessageListener messageListener = Manager.get().getMessageListener();
 		messageListener.addMessage("*** Start saving images ***");
 		long start = System.currentTimeMillis();
 
 		int index = 1;
-		for (ImagePair pair : pairs) {
-			String filePath = path + "\\" + pair.getName() + ".png";
-			messageListener.addMessage(" - Saving image " + index++ + " of " + pairs.size() + " (" + filePath + ")");
+		for (ImageUnit unit : units) {
+			String filePath = path + "\\" + unit.getName() + ".png";
+			messageListener.addMessage(" - Saving image " + index++ + " of " + units.size() + " (" + filePath + ")");
 
-			saveImage(pair.getComposition(), filePath);
+			saveImage(unit.getImageResult(), filePath);
 		}
 		double seconds = (double)(System.currentTimeMillis() - start) / 1000;
 		DecimalFormat nf = new DecimalFormat("#.##");

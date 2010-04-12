@@ -96,6 +96,17 @@ public class PreviewPanel extends JPanel {
 		repaint();
 	}
 
+	public int getVisibleImageHeight() {
+		int height = 0;
+		for (Image image : images) {
+			int currentHeight = image.getHeight(this);
+			if (currentHeight > height) {
+				height = currentHeight;
+			}
+		}
+		return (int) (height * zoom);
+	}
+
 	private void adjustZoom() {
 		int totalImgWidth = 0;
 		for (Image image : images) {

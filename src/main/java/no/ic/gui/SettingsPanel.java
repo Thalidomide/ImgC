@@ -6,14 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import engine.EngineMode;
+import engine.EngineSettings;
+import util.Constants;
 import util.Manager;
 
 /**
@@ -23,8 +27,11 @@ import util.Manager;
 public class SettingsPanel extends JPanel {
 
 	private final SettingsListener listener;
-	private EngineModeRadioButton[] engineModes;
 	private JPanel engineModeSubPanel;
+	private EngineSettings engineSettings;
+
+	private EngineModeRadioButton[] engineModes;
+	private JComboBox imageParts;
 
 	/* Composite settings */
 	private JCheckBox reversedImageOrder;
@@ -33,6 +40,7 @@ public class SettingsPanel extends JPanel {
 		super(new BorderLayout());
 
 		this.listener = listener;
+		engineSettings = Manager.get().getEngineSettings();
 
 		addSettingsComponents();
 		addButtons();
@@ -42,7 +50,7 @@ public class SettingsPanel extends JPanel {
 		JPanel settingsPanel = new JPanel(new BorderLayout());
 		engineModeSubPanel = new JPanel(new CardLayout());
 
-		addEngineModeRadioButtons(settingsPanel);
+		addEngineModePrimaryComponents(settingsPanel);
 
 		settingsPanel.add(engineModeSubPanel, BorderLayout.CENTER);
 
@@ -54,7 +62,7 @@ public class SettingsPanel extends JPanel {
 		add(settingsPanel, BorderLayout.CENTER);
 	}
 
-	private void addEngineModeRadioButtons(JPanel settingsPanel) {
+	private void addEngineModePrimaryComponents(JPanel settingsPanel) {
 		EngineMode[] modes = EngineMode.values();
 		JPanel engineModePanel = new JPanel();
 
@@ -75,6 +83,19 @@ public class SettingsPanel extends JPanel {
 			engineModePanel.add(rb);
 		}
 
+		JLabel partsLabel = new JLabel("Image parts:");
+
+		Vector<Integer> partNumbers = new Vector<Integer>();
+
+		for (int i = Constants.MIN_IMAGE_PARTS; i <= Constants.MAX_IMAGE_PARTS; i++) {
+			partNumbers.add(i);
+		}
+
+		imageParts = new JComboBox(partNumbers);
+
+		engineModePanel.add(partsLabel);
+		engineModePanel.add(imageParts);
+
 		settingsPanel.add(engineModePanel, BorderLayout.NORTH);
 	}
 
@@ -87,7 +108,7 @@ public class SettingsPanel extends JPanel {
 
 	private void addManipulateEngineComponents() {
 		JPanel panel = new JPanel();
-		panel.add(new JLabel("Coming soon..."));
+		panel.add(new JLabel("Currently there are no specific settings for this mode."));
 
 		engineModeSubPanel.add(panel, EngineMode.manipulate.name());
 	}
@@ -126,7 +147,12 @@ public class SettingsPanel extends JPanel {
 	}
 
 	private void save() {
-		Manager.get().setEngineMode(getSelectedEngineRB().getEngineMode());
+		engineSettings.setEngineMode(getSelectedEngineRB().getEngineMode());
+		engineSettings.setImageParts(getImageParts());
+	}
+
+	private int getImageParts() {
+		return (Integer) imageParts.getSelectedItem();
 	}
 
 	private EngineModeRadioButton getSelectedEngineRB() {
@@ -141,7 +167,7 @@ public class SettingsPanel extends JPanel {
 	private void restoreGui() {
 		Manager manager = Manager.get();
 
-		EngineMode selectedEngineMode = manager.getEngineMode();
+		EngineMode selectedEngineMode = manager.getEngineSettings().getEngineMode();
 
 		for (EngineModeRadioButton engineModeRadioButton : engineModes) {
 			if (selectedEngineMode == engineModeRadioButton.getEngineMode()) {
@@ -150,17 +176,19 @@ public class SettingsPanel extends JPanel {
 			}
 		}
 
-		reversedImageOrder.setSelected(manager.isLeftRightReversed());
+		reversedImageOrder.setSelected(manager.getEngineSettings().isLeftRightReversed());
+
+		imageParts.setSelectedItem(engineSettings.getImageParts());
 
 		updateEngineWidgets();
 	}
 
 	private JCheckBox getReversedImageOrder() {
-		reversedImageOrder = new JCheckBox("Reverse left/right");
+		reversedImageOrder = new JCheckBox("Reverse image orders");
 		reversedImageOrder.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				Manager.get().setLeftRightReversed(reversedImageOrder.isSelected());
+				Manager.get().getEngineSettings().setLeftRightReversed(reversedImageOrder.isSelected());
 			}
 		});
 		return reversedImageOrder;

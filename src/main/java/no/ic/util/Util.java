@@ -19,7 +19,7 @@ public class Util {
 			return ImageIO.read(file);
 		} catch (IOException e) {
 			e.printStackTrace();
-			return null;
+			return getTestImage(100, 100);
 		}
 	}
 
@@ -46,12 +46,8 @@ public class Util {
 		return name.matches(Constants.REGEX_VALID_IMAGE_FILES);
 	}
 
-	public static String getLeftImageName(String postfixedName) {
-		return getTrimmedName(postfixedName, Constants.LEFT_IMAGE_POSTFIXES);
-	}
-
-	public static String getRightImageName(String postfixedName) {
-		return getTrimmedName(postfixedName, Constants.RIGHT_IMAGE_POSTFIXES);
+	public static String getImageNameWithoutPostfix(String postfixedName, int index) {
+		return getTrimmedName(postfixedName, Constants.IMAGE_POSTFIXES.get(index));
 	}
 
 	public static boolean stringsAreDifferent(String s1, String s2) {

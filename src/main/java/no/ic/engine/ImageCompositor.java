@@ -1,7 +1,6 @@
 package engine;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
@@ -11,42 +10,70 @@ import java.util.List;
 import javax.swing.JButton;
 
 import entities.ImageComponent;
-import entities.ImagePair;
+import entities.ImageUnit;
+import util.Constants;
+import util.Manager;
 import util.Util;
 
 /**
  * @author Olav Jensen
  * @since 13.mar.2010
  */
-public class ImageCompositor {
+public class ImageCompositor implements ImageEngine {
 
-	public static BufferedImage composite(Image img1, Image img2) {
-		ImageObserver imgObserver = new JButton();//TODO Hmm
+	@Override
+	public EngineMode getEngineMode() {
+		return EngineMode.composite;
+	}
 
-		final int width1 = img1.getWidth(imgObserver);
-		final int width2 = img2.getWidth(imgObserver);
-		final int height1 = img1.getHeight(imgObserver);
-		final int height2 = img2.getHeight(imgObserver);
+	@Override
+	public BufferedImage getCalculatedImage(ImageUnit imageUnit) {
+		EngineSettings engineSettings = Manager.get().getEngineSettings();
+		int imageParts = engineSettings.getImageParts();
 
-		final int width = width1 + width2;
-		final int height = height1 > height2 ? height1 : height2;
+		if (imageParts != imageUnit.getImageComponents()) {
+			throw new RuntimeException("Target image parts did not match image unit parts! Target parts: " + imageParts
+					+ ", actual parts: " + imageUnit.getImageComponents());
+		}
 
-		BufferedImage result = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		BufferedImage[] parts = new BufferedImage[imageParts];
+		int width = 0;
+		int height = 0;
 
+		for (int i = 0; i < imageParts; i++) {
+			int partIndex = engineSettings.isLeftRightReversed() ? imageParts - i - 1 : i;
+			BufferedImage image = imageUnit.getImageComponent(partIndex).getImage();
+
+			parts[i] = image;
+
+			width += image.getWidth();
+			int imgHeight = image.getHeight();
+			if (imgHeight > height) {
+				height = imgHeight;
+			}
+		}
+
+		BufferedImage result = ImageUtil.createNewImage(width, height);
 		Graphics graphics = result.getGraphics();
-		graphics.drawImage(img1, 0, 0, imgObserver);
-		graphics.drawImage(img2, width1, 0, imgObserver);
+		ImageObserver imgObserver = new JButton();//TODO Hmm
+		int x = 0;
+
+		for (BufferedImage part : parts) {
+			graphics.drawImage(part, x, 0, imgObserver);
+			x += part.getWidth();
+		}
 
 		return result;
 	}
 
-	public static List<ImagePair> getImagePairs(File[] files) {
+	@Override
+	public List<ImageUnit> getImageUnits(File[] files) {
 		List<ImageComponent> imageComponents = getImageComponents(files);
 
 		return getPairs(imageComponents);
 	}
 
-	private static List<ImageComponent> getImageComponents(File[] files) {
+	private List<ImageComponent> getImageComponents(File[] files) {
 		List<ImageComponent> imageComponents = new ArrayList<ImageComponent>();
 
 		for (File file : files) {
@@ -54,19 +81,19 @@ public class ImageCompositor {
 			if (Util.isValidImageFile(fileNameWithEnding)) {
 				String nameWithoutEnding = Util.getFileNameWithoutEnding(fileNameWithEnding);
 				boolean validImageComponent = false;
-				boolean left = false;
-				String name;
+				int index = 0;
+				String name = null;
 
-				if ((name = Util.getLeftImageName(nameWithoutEnding)) != null) {
-					validImageComponent = true;
-					left = true;
-				} else if ((name = Util.getRightImageName(nameWithoutEnding)) != null) {
-					validImageComponent = true;
-					left = false;
+				for (int i = 0; i < Constants.MAX_IMAGE_PARTS; i++) {
+					if ((name = Util.getImageNameWithoutPostfix(nameWithoutEnding, i)) != null) {
+						validImageComponent = true;
+						index = i;
+						break;
+					}
 				}
 
 				if (validImageComponent) {
-					ImageComponent component = new ImageComponent(file, name, left);
+					ImageComponent component = new ImageComponent(file, name, index);
 					imageComponents.add(component);
 				}
 			}
@@ -75,25 +102,45 @@ public class ImageCompositor {
 		return imageComponents;
 	}
 
-	static List<ImagePair> getPairs(List<ImageComponent> imageComponents) {
-		ArrayList<ImagePair> pairs = new ArrayList<ImagePair>();
+	List<ImageUnit> getPairs(List<ImageComponent> imageComponents) {
+		ArrayList<ImageUnit> units = new ArrayList<ImageUnit>();
 
 		Collections.sort(imageComponents);
 
 		int index = 0;
+		final int imageParts = Manager.get().getEngineSettings().getImageParts();
 
 		while (index < imageComponents.size() - 1) {
-			ImageComponent imgCmp1 = imageComponents.get(index);
-			ImageComponent imgCmp2 = imageComponents.get(index + 1);
+			ImageComponent firstComponent = imageComponents.get(index);
+			List<ImageComponent> otherComponents;
+			int lastComponentIndex = index + imageParts - 1;
+			
+			if (lastComponentIndex < imageComponents.size()) {
+				otherComponents = imageComponents.subList(index + 1, lastComponentIndex + 1);
+			} else {
+				break;
+			}
 
-			if (imgCmp1.getName().equals(imgCmp2.getName())) {
-				pairs.add(new ImagePair(imgCmp1, imgCmp2));
-				index += 2;
+			String name = firstComponent.getName();
+			boolean valid = true;
+			for (ImageComponent otherComponent : otherComponents) {
+				if (!name.equals(otherComponent.getName())) {
+					valid = false;
+					break;
+				}
+			}
+			if (valid) {
+				List<ImageComponent> unitComponents = new ArrayList<ImageComponent>(imageParts);
+				unitComponents.add(firstComponent);
+				unitComponents.addAll(otherComponents);
+
+				units.add(new ImageUnit(unitComponents));
+				index += imageParts;
 			} else {
 				index++;
 			}
 		}
 
-		return pairs;
+		return units;
 	}
 }

@@ -1,6 +1,6 @@
 package entities;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 import util.Util;
@@ -13,22 +13,22 @@ public class ImageComponent implements Comparable<ImageComponent> {
 
 	private final File imageFile;
 	private final String name;
-	private final boolean left;
+	private final int position;
 
-	public ImageComponent(File imageFile, String name, boolean left) {
+	public ImageComponent(File imageFile, String name, int position) {
 		if (name == null) {
 			throw new RuntimeException("Name cannot be null");
 		}
 		this.imageFile = imageFile;
 		this.name = name;
-		this.left = left;
+		this.position = position;
 	}
 
 	public File getImageFile() {
 		return imageFile;
 	}
 
-	public Image getImage() {
+	public BufferedImage getImage() {
 		return Util.loadImage(imageFile);
 	}
 
@@ -40,8 +40,8 @@ public class ImageComponent implements Comparable<ImageComponent> {
 		return imageFile.getName();
 	}
 
-	public boolean isLeft() {
-		return left;
+	public int getPosition() {
+		return position;
 	}
 
 	public int compareTo(ImageComponent o) {

@@ -9,9 +9,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import engine.ImageCompositor;
+import engine.ImageEngineUtil;
 import engine.ImageSaverLoader;
-import entities.ImagePair;
+import entities.ImageUnit;
 import status.MessageListener;
 import status.StatusHandler;
 import status.StatusListener;
@@ -27,13 +27,13 @@ import util.Manager;
 public class MainFrame extends JFrame implements ButtonPanelListener, StatusListener, MessageListener, SettingsListener {
 
 	private StatusPanel statusPanel;
-	private ImagePairsResultPanel resultPanel;
+	private ImageUnitsResultPanel resultPanel;
 	private ButtonPanel buttonPanel;
-	private String path;
 
 	private JPanel content;
 
 	private ViewMode viewMode;
+	private File selectedDirectory;
 
 	public MainFrame() throws HeadlessException {
 		setSize(Constants.SIZE);
@@ -43,7 +43,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		JPanel mainContent = new JPanel(new BorderLayout());
 
 		statusPanel = new StatusPanel();
-		resultPanel = new ImagePairsResultPanel();
+		resultPanel = new ImageUnitsResultPanel();
 		buttonPanel = new ButtonPanel(this);
 		SettingsPanel settingsContent = new SettingsPanel(this);
 
@@ -76,12 +76,8 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 			Work work = new Work() {
 				@Override
 				public void executeWork() {
-					File selectedFile = fileChooser.getSelectedFile();
-					path = selectedFile.getAbsolutePath();
-					File[] files = fileChooser.getFileSystemView().getFiles(selectedFile, true);
-					List<ImagePair> pairs = ImageCompositor.getImagePairs(files);
-					resultPanel.setPairs(pairs);
-					buttonPanel.setSaveButtonEnabled(!pairs.isEmpty());
+					selectedDirectory = fileChooser.getSelectedFile();
+					loadImagesFromDirectory();
 				}
 			};
 
@@ -94,15 +90,15 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		Work storeWork = new Work() {
 			@Override
 			public void executeWork() {
-				String savePath = path + "\\Composition";
-				if (Manager.get().isLeftRightReversed()) {
+				String savePath = selectedDirectory.getAbsolutePath() + "\\Composition";
+				if (Manager.get().getEngineSettings().isLeftRightReversed()) {
 					savePath += "Reversed";
 				}
 
-				ImageSaverLoader.saveImagePairs(resultPanel.getPairs(), savePath);
+				ImageSaverLoader.saveImageUnits(resultPanel.getPairs(), savePath);
 			}
 		};
-		
+
 		Manager.get().getStatusHandler().doWork(StatusType.working, storeWork, "Creating and saving images");
 	}
 
@@ -125,13 +121,22 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 	@Override
 	public void saveSettings() {
-		//TODO Implement: update images if folder selected...++
+		if (selectedDirectory != null) {
+			loadImagesFromDirectory();
+		}
 		showMainView();
 	}
 
 	@Override
 	public void cancelSettings() {
 		showMainView();
+	}
+
+	private void loadImagesFromDirectory() {
+		File[] files = selectedDirectory.listFiles();
+		List<ImageUnit> imageUnits = ImageEngineUtil.getImageUnits(files);
+		resultPanel.setPairs(imageUnits);
+		buttonPanel.setSaveButtonEnabled(!imageUnits.isEmpty());
 	}
 
 	private void showMainView() {
