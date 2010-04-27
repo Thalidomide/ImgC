@@ -77,19 +77,30 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UtilTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/test/olj/ic/util/UtilTest.java">
+      <file leaf-file-name="MainFrame.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="81" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0">
+            <state line="88" column="19" selection-start="2409" selection-end="2409" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatusHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/status/StatusHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="0" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Button.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Button.java">
+      <file leaf-file-name="ButtonPanel.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="49" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0">
+            <state line="60" column="21" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.5339233">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,21 +108,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainFrame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="30" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageUnitPanel.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ImageUnitPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="31" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.539823">
+            <state line="48" column="31" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageSaverLoader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageSaverLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="28" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckBox.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/CheckBox.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="34" selection-start="266" selection-end="266" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="197" column="60" selection-start="5402" selection-end="5402" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,22 +193,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageSaverLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/test/olj/ic/util/UtilTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/util/Util.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/entities/ImageUnit.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Label.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Panel.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Button.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitsResultPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/PreviewPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/StatusPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/TextArea.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/util/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageSaverLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/entities/RadioButton.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/RadioButton.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/CheckBox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java" />
       </list>
     </option>
   </component>
@@ -407,6 +440,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompositor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompositor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -895,54 +962,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/EngineSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/util/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="26" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/Starter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="33" selection-start="310" selection-end="310" vertical-scroll-proportion="0.33333334">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="15" selection-start="309" selection-end="309" vertical-scroll-proportion="0.67256635">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="32" selection-start="3304" selection-end="3304" vertical-scroll-proportion="-0.37463126">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/PreviewPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="34" selection-start="337" selection-end="337" vertical-scroll-proportion="-1.0973451">
@@ -1011,18 +1030,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="30" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
+        <state line="48" column="31" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageSaverLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="31" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.539823">
+        <state line="23" column="28" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/RadioButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="34" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/CheckBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="34" selection-start="266" selection-end="266" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="197" column="60" selection-start="5402" selection-end="5402" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/status/StatusHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="19" selection-start="2409" selection-end="2409" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="21" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.5339233">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

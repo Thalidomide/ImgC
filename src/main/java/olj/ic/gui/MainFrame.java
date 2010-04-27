@@ -67,7 +67,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 	@Override
 	public void openFolder() {
-		final JFileChooser fileChooser = new JFileChooser("C:\\A Image Collection_Test");
+		final JFileChooser fileChooser = new JFileChooser("C:\\");
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
 		int action = fileChooser.showDialog(MainFrame.this, "Open");

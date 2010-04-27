@@ -1,5 +1,7 @@
 package olj.ic.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
@@ -54,9 +56,9 @@ public class ButtonPanel extends Panel {
 
 	private JButton getSaveImages() {
 		saveImages = new Button("Save images");
-		saveImages.addMouseListener(new MouseAdapter() {
+		saveImages.addActionListener(new ActionListener() {
 			@Override
-			public void mouseReleased(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				setButtonsEnabled(false);
 				listener.storeImages();
 			}

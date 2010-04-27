@@ -2,21 +2,23 @@ package olj.ic.gui;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 import javax.swing.ButtonGroup;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
+import javax.swing.border.BevelBorder;
 
 import olj.ic.engine.EngineMode;
 import olj.ic.engine.EngineSettings;
 import olj.ic.gui.components.Button;
+import olj.ic.gui.components.CheckBox;
 import olj.ic.gui.components.Label;
 import olj.ic.gui.components.Panel;
+import olj.ic.gui.components.RadioButton;
 import olj.ic.util.Constants;
 import olj.ic.util.Manager;
 
@@ -34,7 +36,8 @@ public class SettingsPanel extends Panel {
 	private JComboBox imageParts;
 
 	/* Composite settings */
-	private JCheckBox reversedImageOrder;
+	private CheckBox reversedImageOrder;
+	private final Color subEngineBackground = Constants.BACKGROUND_INPUT;
 
 	public SettingsPanel(SettingsListener listener) {
 		super(new BorderLayout());
@@ -49,6 +52,7 @@ public class SettingsPanel extends Panel {
 	private void addSettingsComponents() {
 		Panel settingsPanel = new Panel(new BorderLayout());
 		engineModeSubPanel = new Panel(new CardLayout());
+		engineModeSubPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
 
 		addEngineModePrimaryComponents(settingsPanel);
 
@@ -100,17 +104,23 @@ public class SettingsPanel extends Panel {
 	}
 
 	private void addCompositeEngineComponents() {
-		Panel compositePanel = new Panel();
+		Panel compositePanel = getSubEnginePanel();
 		compositePanel.add(getReversedImageOrder());
 
 		engineModeSubPanel.add(compositePanel, EngineMode.composite.name());
 	}
 
 	private void addManipulateEngineComponents() {
-		Panel panel = new Panel();
+		Panel panel = getSubEnginePanel();
 		panel.add(new Label("Currently there are no specific settings for this mode."));
 
 		engineModeSubPanel.add(panel, EngineMode.manipulate.name());
+	}
+
+	private Panel getSubEnginePanel() {
+		Panel panel = new Panel();
+		panel.setBackground(subEngineBackground);
+		return panel;
 	}
 
 	private void updateEngineWidgets() {
@@ -183,8 +193,9 @@ public class SettingsPanel extends Panel {
 		updateEngineWidgets();
 	}
 
-	private JCheckBox getReversedImageOrder() {
-		reversedImageOrder = new JCheckBox("Reverse image orders");
+	private CheckBox getReversedImageOrder() {
+		reversedImageOrder = new CheckBox("Reverse image orders");
+		reversedImageOrder.setBackground(subEngineBackground);
 		reversedImageOrder.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -194,7 +205,7 @@ public class SettingsPanel extends Panel {
 		return reversedImageOrder;
 	}
 
-	private class EngineModeRadioButton extends JRadioButton {
+	private class EngineModeRadioButton extends RadioButton {
 
 		private final EngineMode engineMode;
 
