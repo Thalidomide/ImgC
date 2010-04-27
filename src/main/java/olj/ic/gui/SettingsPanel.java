@@ -8,15 +8,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import olj.ic.engine.EngineMode;
 import olj.ic.engine.EngineSettings;
+import olj.ic.gui.components.Button;
+import olj.ic.gui.components.Label;
+import olj.ic.gui.components.Panel;
 import olj.ic.util.Constants;
 import olj.ic.util.Manager;
 
@@ -24,10 +24,10 @@ import olj.ic.util.Manager;
  * @author Olav Jensen
  * @since Apr 11, 2010
  */
-public class SettingsPanel extends JPanel {
+public class SettingsPanel extends Panel {
 
 	private final SettingsListener listener;
-	private JPanel engineModeSubPanel;
+	private Panel engineModeSubPanel;
 	private EngineSettings engineSettings;
 
 	private EngineModeRadioButton[] engineModes;
@@ -47,8 +47,8 @@ public class SettingsPanel extends JPanel {
 	}
 
 	private void addSettingsComponents() {
-		JPanel settingsPanel = new JPanel(new BorderLayout());
-		engineModeSubPanel = new JPanel(new CardLayout());
+		Panel settingsPanel = new Panel(new BorderLayout());
+		engineModeSubPanel = new Panel(new CardLayout());
 
 		addEngineModePrimaryComponents(settingsPanel);
 
@@ -62,9 +62,9 @@ public class SettingsPanel extends JPanel {
 		add(settingsPanel, BorderLayout.CENTER);
 	}
 
-	private void addEngineModePrimaryComponents(JPanel settingsPanel) {
+	private void addEngineModePrimaryComponents(Panel settingsPanel) {
 		EngineMode[] modes = EngineMode.values();
-		JPanel engineModePanel = new JPanel();
+		Panel engineModePanel = new Panel();
 
 		engineModes = new EngineModeRadioButton[modes.length];
 		ButtonGroup group = new ButtonGroup();
@@ -83,7 +83,7 @@ public class SettingsPanel extends JPanel {
 			engineModePanel.add(rb);
 		}
 
-		JLabel partsLabel = new JLabel("Image parts:");
+		Label partsLabel = new Label("Image parts:");
 
 		Vector<Integer> partNumbers = new Vector<Integer>();
 
@@ -100,15 +100,15 @@ public class SettingsPanel extends JPanel {
 	}
 
 	private void addCompositeEngineComponents() {
-		JPanel compositePanel = new JPanel();
+		Panel compositePanel = new Panel();
 		compositePanel.add(getReversedImageOrder());
 
 		engineModeSubPanel.add(compositePanel, EngineMode.composite.name());
 	}
 
 	private void addManipulateEngineComponents() {
-		JPanel panel = new JPanel();
-		panel.add(new JLabel("Currently there are no specific settings for this mode."));
+		Panel panel = new Panel();
+		panel.add(new Label("Currently there are no specific settings for this mode."));
 
 		engineModeSubPanel.add(panel, EngineMode.manipulate.name());
 	}
@@ -120,9 +120,9 @@ public class SettingsPanel extends JPanel {
 	}
 
 	private void addButtons() {
-		JPanel buttonPanel = new JPanel();
-		JButton save = new JButton("Save");
-		JButton cancel = new JButton("Cancel");
+		Panel buttonPanel = new Panel();
+		Button save = new Button("Save");
+		Button cancel = new Button("Cancel");
 
 		save.addMouseListener(new MouseAdapter() {
 			@Override

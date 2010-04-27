@@ -1,8 +1,6 @@
 package olj.ic.util;
 
 import junit.framework.TestCase;
-import olj.ic.util.Constants;
-import olj.ic.util.Util;
 
 /**
  * @author Olav Jensen
@@ -43,18 +41,23 @@ public class UtilTest extends TestCase {
 	}
 
 	public void testGetImageNames() {
-		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1_l", 0));
-		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _L", 0));
+//		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1_l", 0));
+//		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _L", 0));
+//
+//		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _r", 1));
+//		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1  _R", 1));
 
-		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _r", 1));
-		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1  _R", 1));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image -l- 1", 0));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image -r- 1", 1));
 
 		// Test with new postfix
 		Constants.IMAGE_POSTFIXES.get(1).add("[RIGHT]");
 
 		assertEquals("My image", Util.getImageNameWithoutPostfix("My image [RIGHT]", 1));
 
-		assertEquals(null, Util.getImageNameWithoutPostfix("My image [RIGHT]q", 1));
+		assertEquals("My image", Util.getImageNameWithoutPostfix("My [RIGHT] image", 1));
+
+		assertEquals(null, Util.getImageNameWithoutPostfix("My image [RIIGHT]", 1));
 	}
 
 	public void testGetFileNameWithoutEnding() {

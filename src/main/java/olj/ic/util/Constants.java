@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Constants {
 
-	public static final Dimension SIZE = new Dimension(500, 700);
+	public static final Dimension SIZE = new Dimension(800, 900);
 	public static final int DEFAULT_PREVIEW_WIDTH = 1024;
 
 	public static final double ZOOM_FACTOR = 1.2;
@@ -25,18 +25,24 @@ public class Constants {
 	public static final int MAX_IMAGE_PARTS = 4;
 
 	static List<List<String>> IMAGE_POSTFIXES = initializeImagePostFixes();
-	public static Color EVEN_ROW = new Color(255, 255, 255);
 
-	public static Color ODD_ROW = new Color(200, 220, 255);
-	public static Font NORMAL = new Font("Verdana", Font.PLAIN, 12);
+	public static final Color BACKGROUND = new Color(20, 30, 50);
+	public static final Color BACKGROUND_BUTTON = new Color(30, 40, 90);
+	public static final Color BACKGROUND_INPUT = new Color(100, 120, 150);
+	public static final Color FONT = Color.ORANGE;
+	public static final Color EVEN_ROW = new Color(30, 40, 70);
+	public static final Color ODD_ROW = new Color(60, 80, 140);
 
-	public static Font HEADER_2 = new Font("Verdana", Font.BOLD, 14);
+	public static final Font NORMAL = new Font("Verdana", Font.PLAIN, 12);
+	public static final Font SMALLER = new Font("Verdana", Font.PLAIN, 10);
+	public static final Font HEADER_2 = new Font("Verdana", Font.BOLD, 14);
 
 
 	private static List<List<String>> initializeImagePostFixes() {
 		ArrayList<List<String>> postfixes = new ArrayList<List<String>>(MAX_IMAGE_PARTS - MIN_IMAGE_PARTS);
-		postfixes.add(new ArrayList<String>(Arrays.asList("_L")));
-		postfixes.add(new ArrayList<String>(Arrays.asList("_R")));
+		postfixes.add(new ArrayList<String>(Arrays.asList("_L", "-l-", "-a-")));
+		postfixes.add(new ArrayList<String>(Arrays.asList("_R", "-r-", "-b-")));
+		postfixes.add(new ArrayList<String>(Arrays.asList("-c-")));
 
 		for (int i = 0; i < MAX_IMAGE_PARTS; i++) {
 			String postfix = "_" + i;

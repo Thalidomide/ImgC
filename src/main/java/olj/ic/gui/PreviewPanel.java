@@ -5,15 +5,15 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import javax.swing.JPanel;
 
+import olj.ic.gui.components.Panel;
 import olj.ic.util.Constants;
 
 /**
  * @author Olav Jensen
  * @since 08.apr.2010
  */
-public class PreviewPanel extends JPanel {
+public class PreviewPanel extends Panel {
 
 	private Image image;
 

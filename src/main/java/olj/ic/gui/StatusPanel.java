@@ -7,10 +7,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
+import olj.ic.gui.components.Panel;
+import olj.ic.gui.components.TextArea;
 import olj.ic.status.StatusType;
 import olj.ic.util.Constants;
 
@@ -18,16 +18,16 @@ import olj.ic.util.Constants;
  * @author Olav Jensen
  * @since 09.apr.2010
  */
-public class StatusPanel extends JPanel {
+public class StatusPanel extends Panel {
 
 	private StatusLabelPanel statusLabelPanel;
-	private JTextArea statusArea;
+	private TextArea statusArea;
 
 	public StatusPanel() {
 		super(new BorderLayout());
 
 		statusLabelPanel = new StatusLabelPanel();
-		statusArea = new JTextArea();
+		statusArea = new TextArea();
 		statusArea.setEditable(false);
 
 		JScrollPane scrollPane = new JScrollPane(statusArea);
@@ -54,7 +54,7 @@ public class StatusPanel extends JPanel {
 	}
 }
 
-class StatusLabelPanel extends JPanel {
+class StatusLabelPanel extends Panel {
 
 	private StatusType statusType;
 	private String statusDescription;
@@ -80,6 +80,7 @@ class StatusLabelPanel extends JPanel {
 		g.setColor(Color.BLACK);
 		g.drawOval(x, y, diameter, diameter);
 
+		g.setColor(Constants.FONT);
 		Font font = Constants.NORMAL;
 		x += diameter + 10;
 		y = (height + font.getSize()) / 2;

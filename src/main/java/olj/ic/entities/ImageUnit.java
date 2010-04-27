@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 import olj.ic.engine.ImageEngineUtil;
@@ -70,16 +69,7 @@ public class ImageUnit {
 		return components.get(0).getName();
 	}
 
-	public String getImageFileNames() {
-		StringBuilder sb = new StringBuilder();
-
-		for (Iterator<ImageComponent> iterator = components.iterator(); iterator.hasNext();) {
-			sb.append(iterator.next().getFileName());
-			if (iterator.hasNext()) {
-				sb.append(", ");
-			}
-		}
-
-		return sb.toString();
+	public List<ImageComponent> getComponents() {
+		return components;
 	}
 }

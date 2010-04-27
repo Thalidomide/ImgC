@@ -3,23 +3,27 @@ package olj.ic.gui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
-import javax.swing.JPanel;
+
+import olj.ic.gui.components.Button;
+import olj.ic.gui.components.Panel;
+import olj.ic.util.Constants;
 
 /**
  * @author Olav Jensen
  * @since 09.apr.2010
  */
-public class ButtonPanel extends JPanel {
+public class ButtonPanel extends Panel {
 
 	private final ButtonPanelListener listener;
-	private JButton openFolder;
-	private JButton saveImages;
-	private JButton settings;
+	private Button openFolder;
+	private Button saveImages;
+	private Button settings;
 
 	private boolean saveButtonEnabled;
 
 	public ButtonPanel(ButtonPanelListener listener) {
 		this.listener = listener;
+		setBackground(Constants.BACKGROUND);
 
 		add(getOpenFolder());
 		add(getSaveImages());
@@ -38,7 +42,7 @@ public class ButtonPanel extends JPanel {
 	}
 
 	private JButton getOpenFolder() {
-		openFolder = new JButton("Open folder");
+		openFolder = new Button("Open folder");
 		openFolder.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -49,7 +53,7 @@ public class ButtonPanel extends JPanel {
 	}
 
 	private JButton getSaveImages() {
-		saveImages = new JButton("Save images");
+		saveImages = new Button("Save images");
 		saveImages.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -63,7 +67,7 @@ public class ButtonPanel extends JPanel {
 	}
 
 	private JButton getSettings() {
-		settings = new JButton("Settings");
+		settings = new Button("Settings");
 		settings.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {

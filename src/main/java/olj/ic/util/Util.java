@@ -56,9 +56,15 @@ public class Util {
 
 	private static String getTrimmedName(String name, List<String> postfixes) {
 		for (String postfix : postfixes) {
-			boolean contains = name.toUpperCase().endsWith(postfix.toUpperCase());
-			if (contains) {
-				return name.substring(0, name.length() - postfix.length()).trim();
+			int index = name.toUpperCase().indexOf(postfix.toUpperCase());
+			if (index != -1) {
+				int index2 = index + postfix.length();
+				String part1 = name.substring(0, index);
+				String part2 = name.substring(index2);
+				if (part1.endsWith(" ") && part2.startsWith(" ")) {
+					part1 = part1.trim();
+				}
+				return (part1 + part2).trim();
 			}
 		}
 		return null;

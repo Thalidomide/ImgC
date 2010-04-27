@@ -7,11 +7,11 @@ import java.io.File;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import olj.ic.engine.ImageEngineUtil;
 import olj.ic.engine.ImageSaverLoader;
 import olj.ic.entities.ImageUnit;
+import olj.ic.gui.components.Panel;
 import olj.ic.status.MessageListener;
 import olj.ic.status.StatusHandler;
 import olj.ic.status.StatusListener;
@@ -30,7 +30,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 	private ImageUnitsResultPanel resultPanel;
 	private ButtonPanel buttonPanel;
 
-	private JPanel content;
+	private Panel content;
 
 	private ViewMode viewMode;
 	private File selectedDirectory;
@@ -40,7 +40,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(0, 0);
 
-		JPanel mainContent = new JPanel(new BorderLayout());
+		Panel mainContent = new Panel(new BorderLayout());
 
 		statusPanel = new StatusPanel();
 		resultPanel = new ImageUnitsResultPanel();
@@ -51,7 +51,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		mainContent.add(resultPanel, BorderLayout.CENTER);
 		mainContent.add(statusPanel, BorderLayout.SOUTH);
 
-		content = new JPanel(new CardLayout());
+		content = new Panel(new CardLayout());
 		getContentPane().add(content);
 
 		content.add(mainContent, ViewMode.main.name());
@@ -67,7 +67,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 	@Override
 	public void openFolder() {
-		final JFileChooser fileChooser = new JFileChooser("C:\\");
+		final JFileChooser fileChooser = new JFileChooser("C:\\A Image Collection_Test");
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
 		int action = fileChooser.showDialog(MainFrame.this, "Open");
