@@ -24,6 +24,9 @@ public class Constants {
 	public static final int MIN_IMAGE_PARTS = 2;
 	public static final int MAX_IMAGE_PARTS = 4;
 
+	public static final int MIN_WORKING_THREADS = 1;
+	public static final int MAX_WORKING_THREADS = 8;
+
 	static List<List<String>> IMAGE_POSTFIXES = initializeImagePostFixes();
 
 	public static final Color BACKGROUND = new Color(20, 30, 50);

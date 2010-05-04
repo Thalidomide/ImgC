@@ -5,13 +5,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JScrollPane;
 
 import olj.ic.gui.components.Panel;
 import olj.ic.gui.components.TextArea;
-import olj.ic.status.StatusType;
+import olj.ic.gui.util.GuiUtil;
+import olj.ic.work.StatusType;
 import olj.ic.util.Constants;
 
 /**
@@ -22,6 +23,8 @@ public class StatusPanel extends Panel {
 
 	private StatusLabelPanel statusLabelPanel;
 	private TextArea statusArea;
+	private JScrollPane scrollPane;
+	private Calendar calendar = new GregorianCalendar();
 
 	public StatusPanel() {
 		super(new BorderLayout());
@@ -30,14 +33,9 @@ public class StatusPanel extends Panel {
 		statusArea = new TextArea();
 		statusArea.setEditable(false);
 
-		JScrollPane scrollPane = new JScrollPane(statusArea);
+		scrollPane = new JScrollPane(statusArea);
 		scrollPane.setPreferredSize(new Dimension(300, 100));
-		scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
-			@Override
-			public void adjustmentValueChanged(AdjustmentEvent e) {
-				e.getAdjustable().setValue(e.getAdjustable().getMaximum());
-			}
-		});
+		scrollPane.getVerticalScrollBar().setAutoscrolls(true);
 
 		add(statusLabelPanel, BorderLayout.SOUTH);
 		add(scrollPane, BorderLayout.CENTER);
@@ -45,8 +43,20 @@ public class StatusPanel extends Panel {
 		updateStatus(StatusType.idle, null);
 	}
 
-	public void addMessage(String message) {
-		statusArea.setText(statusArea.getText() + message + "\n");
+	public synchronized void addMessage(String message) {
+		calendar.setTimeInMillis(System.currentTimeMillis());
+		String sTimestamp = timeVal(Calendar.HOUR_OF_DAY, 2) + ":" + timeVal(Calendar.MINUTE, 2) + ":"
+				+ timeVal(Calendar.SECOND, 2) + ":" + timeVal(Calendar.MILLISECOND, 3);
+
+		String oldValue = statusArea.getText();
+		if (!"".equals(oldValue)) {
+			oldValue = "\n" + oldValue;
+		}
+		statusArea.setText("<" + sTimestamp + "> " + message + oldValue);
+	}
+
+	private String timeVal(int value, int length) {
+		return GuiUtil.asString(calendar.get(value), length);
 	}
 
 	public void updateStatus(StatusType statusType, String description) {

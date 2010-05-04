@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Vector;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.border.BevelBorder;
@@ -21,6 +20,7 @@ import olj.ic.gui.components.Panel;
 import olj.ic.gui.components.RadioButton;
 import olj.ic.util.Constants;
 import olj.ic.util.Manager;
+import olj.ic.util.Util;
 
 /**
  * @author Olav Jensen
@@ -34,6 +34,7 @@ public class SettingsPanel extends Panel {
 
 	private EngineModeRadioButton[] engineModes;
 	private JComboBox imageParts;
+	private JComboBox threads;
 
 	/* Composite settings */
 	private CheckBox reversedImageOrder;
@@ -87,18 +88,13 @@ public class SettingsPanel extends Panel {
 			engineModePanel.add(rb);
 		}
 
-		Label partsLabel = new Label("Image parts:");
+		imageParts = new JComboBox(Util.getInterval(Constants.MIN_IMAGE_PARTS, Constants.MAX_IMAGE_PARTS));
+		threads = new JComboBox(Util.getInterval(Constants.MIN_WORKING_THREADS, Constants.MAX_WORKING_THREADS));
 
-		Vector<Integer> partNumbers = new Vector<Integer>();
-
-		for (int i = Constants.MIN_IMAGE_PARTS; i <= Constants.MAX_IMAGE_PARTS; i++) {
-			partNumbers.add(i);
-		}
-
-		imageParts = new JComboBox(partNumbers);
-
-		engineModePanel.add(partsLabel);
+		engineModePanel.add(new Label("Image parts:"));
 		engineModePanel.add(imageParts);
+		engineModePanel.add(new Label("Number of threads:"));
+		engineModePanel.add(threads);
 
 		settingsPanel.add(engineModePanel, BorderLayout.NORTH);
 	}
@@ -159,10 +155,15 @@ public class SettingsPanel extends Panel {
 	private void save() {
 		engineSettings.setEngineMode(getSelectedEngineRB().getEngineMode());
 		engineSettings.setImageParts(getImageParts());
+		engineSettings.setThreads(getThreads());
 	}
 
 	private int getImageParts() {
 		return (Integer) imageParts.getSelectedItem();
+	}
+
+	private int getThreads() {
+		return (Integer) threads.getSelectedItem();
 	}
 
 	private EngineModeRadioButton getSelectedEngineRB() {
@@ -189,6 +190,7 @@ public class SettingsPanel extends Panel {
 		reversedImageOrder.setSelected(manager.getEngineSettings().isLeftRightReversed());
 
 		imageParts.setSelectedItem(engineSettings.getImageParts());
+		threads.setSelectedItem(engineSettings.getThreads());
 
 		updateEngineWidgets();
 	}

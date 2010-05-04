@@ -11,6 +11,7 @@ public class EngineSettings {
 	private boolean leftRightReversed;
 	private EngineMode engineMode = EngineMode.composite;
 	private int imageParts = Constants.MIN_IMAGE_PARTS;
+	private int threads = Constants.MIN_WORKING_THREADS;
 	
 
 	public boolean isLeftRightReversed() {
@@ -35,5 +36,13 @@ public class EngineSettings {
 
 	public void setImageParts(int imageParts) {
 		this.imageParts = imageParts;
+	}
+
+	public int getThreads() {
+		return threads;
+	}
+
+	public void setThreads(int threads) {
+		this.threads = threads;
 	}
 }

@@ -6,8 +6,8 @@ import java.awt.event.WindowEvent;
 
 import olj.ic.engine.EngineSettings;
 import olj.ic.gui.PreviewFrame;
-import olj.ic.status.MessageListener;
-import olj.ic.status.StatusHandler;
+import olj.ic.work.MessageListener;
+import olj.ic.work.WorkHandler;
 
 /**
  * @author Olav Jensen
@@ -17,7 +17,7 @@ public class Manager {
 
 	private static Manager instance;
 
-	private StatusHandler statusHandler;
+	private WorkHandler workHandler;
 	private MessageListener messageListener;
 	private PreviewFrame previewFrame;
 
@@ -38,12 +38,12 @@ public class Manager {
 		return engineSettings;
 	}
 
-	public StatusHandler getStatusHandler() {
-		return statusHandler;
+	public WorkHandler getWorkHandler() {
+		return workHandler;
 	}
 
-	public void setStatusHandler(StatusHandler handler) {
-		this.statusHandler = handler;
+	public void setStatusHandler(WorkHandler handler) {
+		this.workHandler = handler;
 	}
 
 	public MessageListener getMessageListener() {
@@ -68,5 +68,11 @@ public class Manager {
 		previewFrame.setTitle(title);
 		previewFrame.setVisible(true);
 		previewFrame.displayImage(image);
+	}
+
+	public void logMessage(String message) {
+		if (messageListener != null) {
+			messageListener.addMessage(message);
+		}
 	}
 }

@@ -12,13 +12,14 @@ import olj.ic.engine.ImageEngineUtil;
 import olj.ic.engine.ImageSaverLoader;
 import olj.ic.entities.ImageUnit;
 import olj.ic.gui.components.Panel;
-import olj.ic.status.MessageListener;
-import olj.ic.status.StatusHandler;
-import olj.ic.status.StatusListener;
-import olj.ic.status.StatusType;
-import olj.ic.status.Work;
+import olj.ic.work.MessageListener;
+import olj.ic.work.StatusListener;
+import olj.ic.work.StatusType;
+import olj.ic.work.Work;
+import olj.ic.work.WorkHandler;
 import olj.ic.util.Constants;
 import olj.ic.util.Manager;
+import olj.ic.work.WorkPackage;
 
 /**
  * @author Olav Jensen
@@ -60,7 +61,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		showMainView();
 
 		Manager.get().setMessageListener(this);
-		Manager.get().setStatusHandler(new StatusHandler(this));
+		Manager.get().setStatusHandler(new WorkHandler(this));
 
 		setVisible(true);
 	}
@@ -74,6 +75,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 		if (action == JFileChooser.APPROVE_OPTION) {
 			Work work = new Work() {
+
 				@Override
 				public void executeWork() {
 					selectedDirectory = fileChooser.getSelectedFile();
@@ -81,25 +83,18 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 				}
 			};
 
-			Manager.get().getStatusHandler().doWork(StatusType.working, work, "Scanning folder");
+			Manager.get().getWorkHandler().doWork(new WorkPackage("Scan folder for images", work));
 		}
 	}
 
 	@Override
 	public void storeImages() {
-		Work storeWork = new Work() {
-			@Override
-			public void executeWork() {
-				String savePath = selectedDirectory.getAbsolutePath() + "\\Composition";
-				if (Manager.get().getEngineSettings().isLeftRightReversed()) {
-					savePath += "Reversed";
-				}
+		String savePath = selectedDirectory.getAbsolutePath() + "\\" + Manager.get().getEngineSettings().getEngineMode();
+		if (Manager.get().getEngineSettings().isLeftRightReversed()) {
+			savePath += "Reversed";
+		}
 
-				ImageSaverLoader.saveImageUnits(resultPanel.getPairs(), savePath);
-			}
-		};
-
-		Manager.get().getStatusHandler().doWork(StatusType.working, storeWork, "Creating and saving images");
+		ImageSaverLoader.saveImageUnits(resultPanel.getPairs(), savePath);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Vector;
 import javax.imageio.ImageIO;
 
 /**
@@ -68,5 +69,15 @@ public class Util {
 			}
 		}
 		return null;
+	}
+
+	public static Vector<Integer> getInterval(int low, int max) {
+		Vector<Integer> result = new Vector<Integer>();
+
+		for (int i = low; i <= max; i++) {
+			result.add(i);
+		}
+
+		return result;
 	}
 }

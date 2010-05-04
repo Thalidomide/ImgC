@@ -32,20 +32,21 @@ public class UtilTest extends TestCase {
 		assertNotNull(Util.getImageNameWithoutPostfix("My image _r", 1));
 		assertNotNull(Util.getImageNameWithoutPostfix("My image _R", 1));
 
+		assertNotNull(Util.getImageNameWithoutPostfix("asdf _l ", 0));
+		assertNotNull(Util.getImageNameWithoutPostfix("asdf _r ", 1));
+
 		// Not valid files
 		assertNull(Util.getImageNameWithoutPostfix("asdf", 0));
-		assertNull(Util.getImageNameWithoutPostfix("asdf _l ", 0));
 
 		assertNull(Util.getImageNameWithoutPostfix("asdf", 1));
-		assertNull(Util.getImageNameWithoutPostfix("asdf _Rd", 1));
 	}
 
 	public void testGetImageNames() {
-//		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1_l", 0));
-//		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _L", 0));
-//
-//		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _r", 1));
-//		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1  _R", 1));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1_l", 0));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _L", 0));
+
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1 _r", 1));
+		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image 1  _R", 1));
 
 		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image -l- 1", 0));
 		assertEquals("Image 1", Util.getImageNameWithoutPostfix("Image -r- 1", 1));

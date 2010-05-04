@@ -3,13 +3,14 @@ package olj.ic.engine;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 
 import olj.ic.entities.ImageUnit;
-import olj.ic.status.MessageListener;
+import olj.ic.work.Work;
 import olj.ic.util.Manager;
+import olj.ic.work.WorkPackage;
 
 /**
  * @author Olav Jensen
@@ -17,22 +18,22 @@ import olj.ic.util.Manager;
  */
 public class ImageSaverLoader {
 
-	public static void saveImageUnits(List<ImageUnit> units, String path) {
-		MessageListener messageListener = Manager.get().getMessageListener();
-		messageListener.addMessage("*** Start saving images ***");
-		long start = System.currentTimeMillis();
+	public static void saveImageUnits(final List<ImageUnit> units, final String path) {
+		List<Work> workList = new ArrayList<Work>(units.size());
 
 		int index = 1;
-		for (ImageUnit unit : units) {
-			String filePath = path + "\\" + unit.getName() + ".png";
-			messageListener.addMessage(" - Saving image " + index++ + " of " + units.size() + " (" + filePath + ")");
-
-			saveImage(unit.getImageResult(), filePath);
+		for (final ImageUnit unit : units) {
+			final int curIndex = index++;
+			workList.add(new Work() {
+				@Override
+				public void executeWork() {
+					String filePath = path + "\\" + unit.getName() + ".png";
+					Manager.get().getMessageListener().addMessage(" - Saving image " + curIndex + " of " + units.size() + " (" + filePath + ")");
+					saveImage(unit.getImageResult(), filePath);
+				}
+			});
 		}
-		double seconds = (double)(System.currentTimeMillis() - start) / 1000;
-		DecimalFormat nf = new DecimalFormat("#.##");
-
-		messageListener.addMessage("*** Finished saving images in: " + nf.format(seconds) + " seconds ***");
+		Manager.get().getWorkHandler().doWork(new WorkPackage("Create images", workList));
 	}
 
 	private static void saveImage(BufferedImage image, String filePath) {

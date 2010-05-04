@@ -1,4 +1,4 @@
-package olj.ic.status;
+package olj.ic.work;
 
 /**
  * @author Olav Jensen

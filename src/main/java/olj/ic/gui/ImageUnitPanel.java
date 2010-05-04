@@ -11,10 +11,10 @@ import olj.ic.entities.ImageComponent;
 import olj.ic.entities.ImageUnit;
 import olj.ic.gui.components.Label;
 import olj.ic.gui.components.Panel;
-import olj.ic.status.StatusType;
-import olj.ic.status.Work;
+import olj.ic.work.Work;
 import olj.ic.util.Constants;
 import olj.ic.util.Manager;
+import olj.ic.work.WorkPackage;
 
 /**
  * @author Olav Jensen
@@ -34,7 +34,8 @@ public class ImageUnitPanel extends Panel {
 
 		Label titleLabel = new Label((index + 1) + ". image unit: " + unit.getName());
 		titleLabel.setFont(Constants.HEADER_2);
-		titleLabel.addMouseListener(getMouseListener(new Work() {
+		titleLabel.addMouseListener(getMouseListener("Generating preview for " + unit.getName(), new Work() {
+
 			@Override
 			public void executeWork() {
 				Manager.get().showPreview(unit.getImageResult(), "Showing preview of " + unit.getName());
@@ -45,7 +46,8 @@ public class ImageUnitPanel extends Panel {
 		for (final ImageComponent component : unit.getComponents()) {
 			final String fileName = component.getFileName();
 			Label label = new Label(fileName);
-			label.addMouseListener(getMouseListener(new Work() {
+			label.addMouseListener(getMouseListener(null, new Work() {
+
 				@Override
 				public void executeWork() {
 					Manager.get().showPreview(component.getImage(), fileName);
@@ -63,11 +65,11 @@ public class ImageUnitPanel extends Panel {
 		add(panel);
 	}
 
-	private MouseAdapter getMouseListener(final Work work) {
+	private MouseAdapter getMouseListener(final String description, final Work work) {
 		return new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				Manager.get().getStatusHandler().doWork(StatusType.working, work, "Generating preview");
+				Manager.get().getWorkHandler().doWork(new WorkPackage(description, work));
 			}
 		};
 	}

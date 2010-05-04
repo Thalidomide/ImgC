@@ -1,16 +1,13 @@
-package olj.ic.status;
+package olj.ic.work;
 
 import junit.framework.TestCase;
-import olj.ic.status.StatusHandler;
-import olj.ic.status.StatusListener;
-import olj.ic.status.StatusType;
-import olj.ic.status.Work;
+import olj.ic.util.Manager;
 
 /**
  * @author Olav Jensen
  * @since 10.apr.2010
  */
-public class StatusHandlerTest extends TestCase implements StatusListener {
+public class WorkHandlerTest extends TestCase implements StatusListener {
 
 	private StatusType statusType;
 	private int statusChangedCounter;
@@ -22,7 +19,7 @@ public class StatusHandlerTest extends TestCase implements StatusListener {
 	}
 
 	public void testHandlingStatuses() {
-		StatusHandler statusHandler = new StatusHandler(this);
+		WorkHandler workHandler = new WorkHandler(this);
 		class TestWork implements Work {
 
 			private final long workTime;
@@ -37,28 +34,30 @@ public class StatusHandlerTest extends TestCase implements StatusListener {
 			}
 		}
 
+		Manager.get().getEngineSettings().setThreads(1);
+
 		assertEquals(StatusType.idle, statusType);
 		assertEquals(1, statusChangedCounter);
 
-		statusHandler.doWork(StatusType.working, new TestWork(50));
+		workHandler.doWork(new WorkPackage(null, new TestWork(30)));
 		assertEquals(StatusType.working, statusType);
 		assertEquals(2, statusChangedCounter);
 
-		statusHandler.doWork(StatusType.working, new TestWork(20));
+		workHandler.doWork(new WorkPackage(null, new TestWork(30)));
 		assertEquals(StatusType.working, statusType);
 		assertEquals(2, statusChangedCounter);
 
 		// Sleep until work #2 is done
-		sleep(30);
+		sleep(35);
 
 		// Status should not have been changed after work #2 completed
 		assertEquals(StatusType.working, statusType);
 		assertEquals(2, statusChangedCounter);
 
 		// Sleep until work #1 is done
-		sleep(30);
+		sleep(35);
 
-		// After work #1 completed ic.status should have changed back to idle
+		// After work #1 completed status should have changed back to idle
 		assertEquals(StatusType.idle, statusType);
 		assertEquals(3, statusChangedCounter);
 	}
