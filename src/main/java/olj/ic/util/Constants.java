@@ -33,6 +33,7 @@ public class Constants {
 	public static final Color BACKGROUND_BUTTON = new Color(30, 40, 90);
 	public static final Color BACKGROUND_INPUT = new Color(100, 120, 150);
 	public static final Color FONT = Color.ORANGE;
+	public static final Color FONT_DISABLED = new Color(140, 70, 30);
 	public static final Color EVEN_ROW = new Color(30, 40, 70);
 	public static final Color ODD_ROW = new Color(60, 80, 140);
 

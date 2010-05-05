@@ -4,16 +4,21 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.border.BevelBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import olj.ic.entities.ImageComponent;
 import olj.ic.entities.ImageUnit;
+import olj.ic.gui.components.CheckBox;
 import olj.ic.gui.components.Label;
 import olj.ic.gui.components.Panel;
-import olj.ic.work.Work;
 import olj.ic.util.Constants;
 import olj.ic.util.Manager;
+import olj.ic.work.Work;
 import olj.ic.work.WorkPackage;
 
 /**
@@ -22,17 +27,32 @@ import olj.ic.work.WorkPackage;
  */
 public class ImageUnitPanel extends Panel {
 
+	private final ImageUnit unit;
 	private final Color background;
+	private CheckBox useImage;
+	private List<Label> labels = new ArrayList<Label>();
 
 	public ImageUnitPanel(final ImageUnit unit, Color background, int index) {
 		super();
+		this.unit = unit;
 		this.background = background;
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(background);
 		setBorder(new BevelBorder(BevelBorder.LOWERED));
 
-		Label titleLabel = new Label((index + 1) + ". image unit: " + unit.getName());
+		addTitle(index);
+		addImages();
+	}
+
+	public void addImageIfActive(List<ImageUnit> units) {
+		if (useImage.isSelected()) {
+			units.add(unit);
+		}
+	}
+
+	private void addTitle(int index) {
+		Label titleLabel = getLabel((index + 1) + ". image unit: " + unit.getName());
 		titleLabel.setFont(Constants.HEADER_2);
 		titleLabel.addMouseListener(getMouseListener("Generating preview for " + unit.getName(), new Work() {
 
@@ -41,11 +61,29 @@ public class ImageUnitPanel extends Panel {
 				Manager.get().showPreview(unit.getImageResult(), "Showing preview of " + unit.getName());
 			}
 		}));
-		addWrapped(titleLabel);
-		
+
+		useImage = new CheckBox();
+		useImage.setBackground(background);
+		useImage.setSelected(true);
+		useImage.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				updateLabels();
+			}
+		});
+
+		Panel titlePanel = getPanel();
+
+		titlePanel.add(useImage);
+		titlePanel.add(titleLabel);
+
+		add(titlePanel);
+	}
+
+	private void addImages() {
 		for (final ImageComponent component : unit.getComponents()) {
 			final String fileName = component.getFileName();
-			Label label = new Label(fileName);
+			Label label = getLabel(fileName);
 			label.addMouseListener(getMouseListener(null, new Work() {
 
 				@Override
@@ -58,11 +96,27 @@ public class ImageUnitPanel extends Panel {
 	}
 
 	private void addWrapped(Component component) {
-		Panel panel = new Panel();
-		panel.setBackground(background);
-
+		Panel panel = getPanel();
 		panel.add(component);
 		add(panel);
+	}
+
+	private Panel getPanel() {
+		Panel panel = new Panel();
+		panel.setBackground(background);
+		return panel;
+	}
+
+	private Label getLabel(String text) {
+		Label label = new Label(text);
+		labels.add(label);
+		return label;
+	}
+
+	private void updateLabels() {
+		for (Label label : labels) {
+			label.setActive(useImage.isSelected());
+		}
 	}
 
 	private MouseAdapter getMouseListener(final String description, final Work work) {

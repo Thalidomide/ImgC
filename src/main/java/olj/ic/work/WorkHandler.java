@@ -33,6 +33,10 @@ public class WorkHandler {
 			executor = createExecutor();
 		}
 
+		if (workPackage.getWorkList().isEmpty()) {
+			return;
+		}
+
 		setCurrentStatusAndNotifyListenerIfTypeChanged(StatusType.working);
 
 		workRemaining += workPackage.getWorkList().size();

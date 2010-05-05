@@ -94,7 +94,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 			savePath += "Reversed";
 		}
 
-		ImageSaverLoader.saveImageUnits(resultPanel.getPairs(), savePath);
+		ImageSaverLoader.saveImageUnits(resultPanel.getImageUnits(), savePath);
 	}
 
 	@Override

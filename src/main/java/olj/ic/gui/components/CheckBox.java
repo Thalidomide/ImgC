@@ -10,8 +10,16 @@ import olj.ic.util.Constants;
  */
 public class CheckBox extends JCheckBox {
 
+	public CheckBox() {
+		init();
+	}
+	
 	public CheckBox(String text) {
 		super(text);
+		init();
+	}
+
+	private void init() {
 		setFont(Constants.NORMAL);
 		setForeground(Constants.FONT);
 		setBackground(Constants.BACKGROUND);

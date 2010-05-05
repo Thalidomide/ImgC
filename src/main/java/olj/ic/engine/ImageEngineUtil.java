@@ -2,6 +2,7 @@ package olj.ic.engine;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,9 @@ public class ImageEngineUtil {
 	}
 
 	public static List<ImageUnit> getImageUnits(File[] files) {
+		if (files == null) {
+			return Collections.emptyList();
+		}
 		return getEngine().getImageUnits(files);
 	}
 

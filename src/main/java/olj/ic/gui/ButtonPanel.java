@@ -59,7 +59,6 @@ public class ButtonPanel extends Panel {
 		saveImages.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setButtonsEnabled(false);
 				listener.storeImages();
 			}
 		});

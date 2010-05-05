@@ -2,6 +2,7 @@ package olj.ic.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
@@ -18,9 +19,9 @@ import olj.ic.util.Constants;
  */
 public class ImageUnitsResultPanel extends Panel {
 
-	private List<ImageUnit> units = new ArrayList<ImageUnit>();
 	private Panel resultPanel;
 	private Label resultLabel;
+	private List<ImageUnitPanel> unitPanels = new ArrayList<ImageUnitPanel>();
 
 	public ImageUnitsResultPanel() {
 		super(new BorderLayout());
@@ -38,29 +39,45 @@ public class ImageUnitsResultPanel extends Panel {
 		add(scroll, BorderLayout.CENTER);
 	}
 
-	public void setPairs(List<ImageUnit> units) {
-		this.units = units;
-		resultPanel.removeAll();
-		if (units.isEmpty()) {
-			updateResultLabel();
-		}
+	public synchronized void setPairs(List<ImageUnit> units) {
+		unitPanels.clear();
 
 		int index = 0;
 		for (ImageUnit unit : units) {
 			Color color = index % 2 == 0 ? Constants.EVEN_ROW : Constants.ODD_ROW;
 			ImageUnitPanel unitPanel = new ImageUnitPanel(unit, color, index);
-			resultPanel.add(unitPanel);
+			unitPanels.add(unitPanel);
 			index++;
 		}
 
-		updateResultLabel();
+		updateResultLabel(units);
+
+		repaint();
 	}
 
-	public List<ImageUnit> getPairs() {
-		return units;
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+
+		resultPanel.removeAll();
+		for (ImageUnitPanel unitPanel : unitPanels) {
+			resultPanel.add(unitPanel);
+		}
+		resultPanel.repaint();
+		validate();
 	}
 
-	private void updateResultLabel() {
+	public List<ImageUnit> getImageUnits() {
+		List<ImageUnit> pairs = new ArrayList<ImageUnit>();
+
+		for (ImageUnitPanel unitPanel : unitPanels) {
+			unitPanel.addImageIfActive(pairs);
+		}
+
+		return pairs;
+	}
+
+	private void updateResultLabel(List<ImageUnit> units) {
 		String text;
 
 		if (units.isEmpty()) {

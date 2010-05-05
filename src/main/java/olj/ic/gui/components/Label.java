@@ -12,7 +12,11 @@ public class Label extends JLabel {
 
 	public Label(String text) {
 		super(text);
-		setForeground(Constants.FONT);
+		setActive(true);
 		setFont(Constants.NORMAL);
+	}
+
+	public void setActive(boolean active) {
+		setForeground(active ? Constants.FONT : Constants.FONT_DISABLED);
 	}
 }
