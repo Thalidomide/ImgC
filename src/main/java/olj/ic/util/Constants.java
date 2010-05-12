@@ -30,12 +30,13 @@ public class Constants {
 	static List<List<String>> IMAGE_POSTFIXES = initializeImagePostFixes();
 
 	public static final Color BACKGROUND = new Color(20, 30, 50);
+	public static final Color BACKGROUND_LIGHT = new Color(30, 40, 70);
+	public static final Color BACKGROUND_LIGHTER = new Color(60, 80, 140);
 	public static final Color BACKGROUND_BUTTON = new Color(30, 40, 90);
 	public static final Color BACKGROUND_INPUT = new Color(100, 120, 150);
+	public static final Color BACKGROUND_INPUT_ERROR = new Color(100, 20, 10);
 	public static final Color FONT = Color.ORANGE;
 	public static final Color FONT_DISABLED = new Color(140, 70, 30);
-	public static final Color EVEN_ROW = new Color(30, 40, 70);
-	public static final Color ODD_ROW = new Color(60, 80, 140);
 
 	public static final Font NORMAL = new Font("Verdana", Font.PLAIN, 12);
 	public static final Font SMALLER = new Font("Verdana", Font.PLAIN, 10);

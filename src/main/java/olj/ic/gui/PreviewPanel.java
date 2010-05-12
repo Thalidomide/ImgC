@@ -1,5 +1,6 @@
 package olj.ic.gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -67,7 +68,17 @@ public class PreviewPanel extends Panel {
 		int x = (int) Math.round(getZoomedValue(xPos)) + getWidth() / 2 - drawWidth / 2;
 		int y = (int) Math.round(getZoomedValue(yPos)) + getHeight() / 2 - drawHeight / 2;
 
+		drawBackground(g, drawWidth, drawHeight, x, y);
+
 		g.drawImage(image, x, y, drawWidth, drawHeight, this);
+	}
+
+	private void drawBackground(Graphics g, int drawWidth, int drawHeight, int x, int y) {
+		int borderThickness = 4;
+		g.setColor(Constants.BACKGROUND_LIGHTER);
+		g.fillRect(x - borderThickness, y - borderThickness, drawWidth + 2 * borderThickness, drawHeight + 2 * borderThickness);
+		g.setColor(Color.WHITE);
+		g.fillRect(x, y, drawWidth, drawHeight);
 	}
 
 	public void setImage(Image image) {
@@ -90,18 +101,26 @@ public class PreviewPanel extends Panel {
 
 	public void zoomIn() {
 		zoom *= Constants.ZOOM_FACTOR;
-		if (zoom > Constants.ZOOM_MAX) {
-			zoom = Constants.ZOOM_MAX;
-		}
+		checkMaxZoom();
 		repaint();
 	}
 
 	public void zoomOut() {
 		zoom /= Constants.ZOOM_FACTOR;
+		checkMinZoom();
+		repaint();
+	}
+
+	private void checkMaxZoom() {
+		if (zoom > Constants.ZOOM_MAX) {
+			zoom = Constants.ZOOM_MAX;
+		}
+	}
+
+	private void checkMinZoom() {
 		if (zoom < Constants.ZOOM_MIN) {
 			zoom = Constants.ZOOM_MIN;
 		}
-		repaint();
 	}
 
 	public int getVisibleImageHeight() {
@@ -112,6 +131,7 @@ public class PreviewPanel extends Panel {
 		int imageWidth = image != null ? image.getWidth(this) : 0;
 
 		zoom = (double)getWidth() / imageWidth;
+		checkMaxZoom();
 
 		repaint();
 	}

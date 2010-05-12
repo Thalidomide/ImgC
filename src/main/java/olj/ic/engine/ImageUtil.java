@@ -9,6 +9,6 @@ import java.awt.image.BufferedImage;
 public class ImageUtil {
 
 	static BufferedImage createNewImage(int width, int heigth) {
-		return new BufferedImage(width, heigth, BufferedImage.TYPE_INT_RGB);
+		return new BufferedImage(width, heigth, BufferedImage.TYPE_INT_ARGB);
 	}
 }

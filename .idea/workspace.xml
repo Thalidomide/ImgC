@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="f9af9e99-b5ea-4334-9a38-0de7f7f1b28a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/test/olj/ic/gui/components/DoubleTextFieldTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageCompositor.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageCompositor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageEngineUtil.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageEngineUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/CheckBox.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/CheckBox.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Label.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Label.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/util/Manager.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/util/Manager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageManipulator.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageManipulator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/engine/EngineSettings.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/engine/EngineSettings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/PreviewPanel.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/PreviewPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/util/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/util/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitsResultPanel.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitsResultPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/work/WorkHandler.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/work/WorkHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageUtil.java" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/TextField.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/DoubleTextField.java" />
     </list>
-    <ignored path="$USER_HOME_GRAILS$/" />
     <ignored path="$USER_HOME_GRIFFON$/" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,21 +34,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="jar://C:/Progs/Java/jdk6_u17/src.zip!/javax/swing/LayoutComparator.java" line="71" class="javax.swing.LayoutComparator" package="javax.swing">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -103,28 +92,19 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainFrame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java">
+      <file leaf-file-name="SettingsPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="43" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.0">
+            <state line="79" column="81" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/work/WorkHandler.java">
+      <file leaf-file-name="DoubleTextField.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/DoubleTextField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="30" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageUnitsResultPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitsResultPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="31" selection-start="1348" selection-end="1348" vertical-scroll-proportion="0.0">
+            <state line="23" column="25" selection-start="462" selection-end="462" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,39 +112,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageUnitPanel.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java">
+      <file leaf-file-name="EngineSettings.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/EngineSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="12" selection-start="1258" selection-end="1258" vertical-scroll-proportion="0.5125725">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Label.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Label.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="22" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
+            <state line="15" column="29" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/util/Constants.java">
+      <file leaf-file-name="ImageEngineUtil.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageEngineUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="43" selection-start="1134" selection-end="1147" vertical-scroll-proportion="0.0">
+            <state line="39" column="107" selection-start="1174" selection-end="1174" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckBox.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/CheckBox.java">
+      <file leaf-file-name="Manager.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/util/Manager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="4" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
+            <state line="67" column="129" selection-start="1478" selection-end="1478" vertical-scroll-proportion="0.42716858">
               <folding />
             </state>
           </provider>
@@ -180,22 +149,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/status/WorkHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/test/olj/ic/status/WorkHandlerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/test/olj/ic/util/UtilTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/work/WorkPackage.java" />
-        <option value="$PROJECT_DIR$/src/main/test/olj/ic/work/WorkHandlerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/util/Manager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageSaverLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/work/WorkHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/CheckBox.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageEngineUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitsResultPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/util/Constants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Label.java" />
         <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/TextBox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/util/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/test/olj/ic/gui/components/DoubleTextFieldTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/PreviewPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/util/Manager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageEngineUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageManipulator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageCompositor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/engine/EngineSettings.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/TextField.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/components/DoubleTextField.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/olj/ic/util/Constants.java" />
       </list>
     </option>
   </component>
@@ -238,38 +207,6 @@
     </navigator>
     <panes>
       <pane id="Favorites" />
-      <pane id="Scope">
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ImageCompositor">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ImageCompositor">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageCompositor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageCompositor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -556,6 +493,38 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ImageCompositor">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ImageCompositor">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompositor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompositor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -581,77 +550,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="olj.ic.gui.components" />
       <recent name="olj.ic.gui.util" />
       <recent name="status" />
       <recent name="entities" />
       <recent name="engine" />
-      <recent name="util" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ImageCompositor">
-    <configuration default="false" name="All in ImageCompositor" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" />
-      <extension name="snapshooter" />
-      <module name="ImageCompositor" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="51133" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="ImageUnitTest.testConstructProperImagePair" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false">
-        <pattern>
-          <option name="PATTERN" value="entities.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="snapshooter" />
-      <module name="ImageCompositor" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="ic.entities" />
-      <option name="MAIN_CLASS_NAME" value="ic.entities.ImageUnitTest" />
-      <option name="METHOD_NAME" value="testConstructProperImagePair" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50100" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.Starter">
     <configuration default="false" name="UtilTest.testGetImageNames" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false">
         <pattern>
@@ -742,6 +648,58 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="DoubleTextFieldTest.testGetDouble" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" />
+      <extension name="snapshooter" />
+      <module name="ImageCompositor" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="olj.ic.gui.components" />
+      <option name="MAIN_CLASS_NAME" value="olj.ic.gui.components.DoubleTextFieldTest" />
+      <option name="METHOD_NAME" value="testGetDouble" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="3335" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DoubleTextFieldTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" />
+      <extension name="snapshooter" />
+      <module name="ImageCompositor" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="olj.ic.gui.components" />
+      <option name="MAIN_CLASS_NAME" value="olj.ic.gui.components.DoubleTextFieldTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -751,14 +709,6 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" air_descriptor_path="" air_program_params="" air_publisher_id="" air_root_dir_path="" air_run_mode="AppDescriptor" class_name="" html_or_swf_file_path="" main_class_name="" method_name="" module_name="" output_log_level="" package_name="" port="0" run_mode="HtmlOrSwfFile" scope="Class" socket_policy_port="0" url_to_launch="http://">
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -891,12 +841,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.All in ImageCompositor" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ImageUnitTest.testConstructProperImagePair" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.UtilTest.testGetImageNames" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Starter" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.GuiUtilTest.testAsString" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.WorkHandlerTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.UtilTest.testGetImageNames" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.GuiUtilTest.testAsString" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.WorkHandlerTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DoubleTextFieldTest.testGetDouble" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DoubleTextFieldTest" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Starter" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -916,7 +866,7 @@
     <option name="DETECT_NESTED_COPIES" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <configuration useDefault="true">C:\Users\Olav Jensen\AppData\Roaming\Subversion</configuration>
+    <configuration useDefault="true">C:\Documents and Settings\olj\Application Data\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
@@ -929,27 +879,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1592" y="-8" width="1936" height="1216" extended-state="6" />
-    <editor active="false" />
+    <frame x="-4" y="-4" width="1688" height="1030" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893497" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39868048" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277027" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39802632" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893497" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277027" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20928991" sideWeight="0.7191329" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20881812" sideWeight="0.7184685" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27426955" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27364865" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -989,119 +939,117 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/work/WorkPackage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="226" selection-end="226" vertical-scroll-proportion="0.18568665">
+        <state line="65" column="23" selection-start="1771" selection-end="1771" vertical-scroll-proportion="0.027874565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/EngineMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="12" selection-start="89" selection-end="89" vertical-scroll-proportion="0.16724738">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageManipulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="13" selection-start="444" selection-end="444" vertical-scroll-proportion="0.22299652">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageSaverLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="42" selection-start="1002" selection-end="1002" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/CheckBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="4" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="189" selection-end="189" vertical-scroll-proportion="0.18568665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Progs/Java/jdk6_u17/src.zip!/java/util/Collections.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="0" selection-start="7402" selection-end="7402" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Progs/Java/jdk6_u17/src.zip!/javax/swing/LayoutComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.33333334">
+        <state line="18" column="13" selection-start="378" selection-end="378" vertical-scroll-proportion="-0.028368793">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageCompositor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="1856" selection-end="1856" vertical-scroll-proportion="0.14506769">
+        <state line="57" column="69" selection-start="1649" selection-end="1649" vertical-scroll-proportion="0.641115">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Progs/Java/jdk6_u17/src.zip!/java/awt/Container.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/TextField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1466" column="16" selection-start="57574" selection-end="57574" vertical-scroll-proportion="0.6859666">
+        <state line="15" column="28" selection-start="279" selection-end="279" vertical-scroll-proportion="0.36236933">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Progs/Java/jdk1.6.0_17/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1161" column="19" selection-start="38388" selection-end="38388" vertical-scroll-proportion="0.6678281">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageEngineUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="34" selection-start="587" selection-end="587" vertical-scroll-proportion="0.3326886">
+        <state line="39" column="107" selection-start="1174" selection-end="1174" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/work/WorkHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/EngineSettings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="30" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
+        <state line="15" column="29" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ButtonPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/DoubleTextField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="30" selection-start="1507" selection-end="1507" vertical-scroll-proportion="1.8761061">
+        <state line="23" column="25" selection-start="462" selection-end="462" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/SettingsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="81" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="43" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.0">
+        <state line="60" column="54" selection-start="1723" selection-end="1723" vertical-scroll-proportion="0.90343696">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/engine/ImageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="129" selection-end="129" vertical-scroll-proportion="0.31423897">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/PreviewPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="339" selection-end="339" vertical-scroll-proportion="-1.3355155">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/util/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="43" selection-start="1134" selection-end="1147" vertical-scroll-proportion="0.0">
+        <state line="33" column="24" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.2536825">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/components/Label.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/util/Manager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
+        <state line="67" column="129" selection-start="1478" selection-end="1478" vertical-scroll-proportion="0.42716858">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitsResultPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="31" selection-start="1348" selection-end="1348" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/olj/ic/gui/ImageUnitPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="12" selection-start="1258" selection-end="1258" vertical-scroll-proportion="0.5125725">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

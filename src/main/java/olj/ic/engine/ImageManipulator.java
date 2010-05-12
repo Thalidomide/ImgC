@@ -27,7 +27,7 @@ public class ImageManipulator implements ImageEngine {
 
 	@Override
 	public BufferedImage getCalculatedImage(ImageUnit imageUnit) {
-		ImageObserver imgObserver = new JButton();//TODO Hmm
+		ImageObserver imgObserver = Manager.get().getImageObserver();
 		final int partsCount = Manager.get().getEngineSettings().getImageParts();
 
 		BufferedImage srcImage = imageUnit.getImageComponent(0).getImage();
@@ -40,8 +40,8 @@ public class ImageManipulator implements ImageEngine {
 		Graphics graphics = result.getGraphics();
 		int xStart, xEnd;
 		for (int i = 0; i < partsCount; i++) {
-			xStart = (int) (((double)i / partsCount) * width);
-			xEnd = (int) (((double)(i + 1) / partsCount) * width);
+			xStart = (int) (((double) i / partsCount) * width);
+			xEnd = (int) (((double) (i + 1) / partsCount) * width);
 			int widthPart = xEnd - xStart;
 
 			BufferedImage part = srcImage.getSubimage(xStart, 0, widthPart, heigth);

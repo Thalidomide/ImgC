@@ -12,7 +12,8 @@ public class EngineSettings {
 	private EngineMode engineMode = EngineMode.composite;
 	private int imageParts = Constants.MIN_IMAGE_PARTS;
 	private int threads = Constants.MIN_WORKING_THREADS;
-	
+	private double scaleX = 1;
+	private double scaleY = 1;
 
 	public boolean isLeftRightReversed() {
 		return leftRightReversed;
@@ -44,5 +45,21 @@ public class EngineSettings {
 
 	public void setThreads(int threads) {
 		this.threads = threads;
+	}
+
+	public double getScaleX() {
+		return scaleX;
+	}
+
+	public void setScaleX(double scaleX) {
+		this.scaleX = scaleX;
+	}
+
+	public double getScaleY() {
+		return scaleY;
+	}
+
+	public void setScaleY(double scaleY) {
+		this.scaleY = scaleY;
 	}
 }

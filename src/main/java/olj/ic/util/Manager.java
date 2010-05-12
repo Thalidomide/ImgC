@@ -3,6 +3,7 @@ package olj.ic.util;
 import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.ImageObserver;
 
 import olj.ic.engine.EngineSettings;
 import olj.ic.gui.PreviewFrame;
@@ -20,6 +21,7 @@ public class Manager {
 	private WorkHandler workHandler;
 	private MessageListener messageListener;
 	private PreviewFrame previewFrame;
+	private ImageObserver imageObserver;
 
 	private final EngineSettings engineSettings;
 
@@ -74,5 +76,13 @@ public class Manager {
 		if (messageListener != null) {
 			messageListener.addMessage(message);
 		}
+	}
+
+	public ImageObserver getImageObserver() {
+		return imageObserver;
+	}
+
+	public void setImageObserver(ImageObserver imageObserver) {
+		this.imageObserver = imageObserver;
 	}
 }

@@ -62,6 +62,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 		Manager.get().setMessageListener(this);
 		Manager.get().setStatusHandler(new WorkHandler(this));
+		Manager.get().setImageObserver(this);
 
 		setVisible(true);
 	}

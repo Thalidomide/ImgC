@@ -55,7 +55,7 @@ public class ImageCompositor implements ImageEngine {
 
 		BufferedImage result = ImageUtil.createNewImage(width, height);
 		Graphics graphics = result.getGraphics();
-		ImageObserver imgObserver = new JButton();//TODO Hmm
+		ImageObserver imgObserver = Manager.get().getImageObserver();
 		int x = 0;
 
 		for (BufferedImage part : parts) {

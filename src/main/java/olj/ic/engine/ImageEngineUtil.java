@@ -19,7 +19,27 @@ public class ImageEngineUtil {
 	private static Map<EngineMode, ImageEngine> engines = new HashMap<EngineMode, ImageEngine>();
 
 	public static BufferedImage getCalculatedImage(ImageUnit imageUnit) {
-		return getEngine().getCalculatedImage(imageUnit);
+		BufferedImage image = getEngine().getCalculatedImage(imageUnit);
+		return checkImageScaling(image);
+	}
+
+	private static BufferedImage checkImageScaling(BufferedImage image) {
+		EngineSettings settings = Manager.get().getEngineSettings();
+		final double scaleX = settings.getScaleX();
+		final double scaleY = settings.getScaleY();
+
+		if (scaleX == 1 && scaleY == 1) {
+			return image;
+		}
+
+		int widthNew = (int) (image.getWidth() * scaleX);
+		int heightNew = (int) (image.getHeight() * scaleY);
+
+		BufferedImage newImage = ImageUtil.createNewImage(widthNew, heightNew);
+
+		newImage.getGraphics().drawImage(image, 0, 0, widthNew, heightNew, Manager.get().getImageObserver());
+
+		return newImage;
 	}
 
 	public static List<ImageUnit> getImageUnits(File[] files) {

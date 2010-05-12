@@ -44,7 +44,7 @@ public class ImageUnitsResultPanel extends Panel {
 
 		int index = 0;
 		for (ImageUnit unit : units) {
-			Color color = index % 2 == 0 ? Constants.EVEN_ROW : Constants.ODD_ROW;
+			Color color = index % 2 == 0 ? Constants.BACKGROUND_LIGHT : Constants.BACKGROUND_LIGHTER;
 			ImageUnitPanel unitPanel = new ImageUnitPanel(unit, color, index);
 			unitPanels.add(unitPanel);
 			index++;
