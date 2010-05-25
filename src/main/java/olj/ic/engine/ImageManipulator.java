@@ -7,7 +7,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.JButton;
 
 import olj.ic.entities.ImageComponent;
 import olj.ic.entities.ImageUnit;
@@ -42,13 +41,21 @@ public class ImageManipulator implements ImageEngine {
 		for (int i = 0; i < partsCount; i++) {
 			xStart = (int) (((double) i / partsCount) * width);
 			xEnd = (int) (((double) (i + 1) / partsCount) * width);
-			int widthPart = xEnd - xStart;
+			int widthPart = getWidth(xStart, xEnd);
 
 			BufferedImage part = srcImage.getSubimage(xStart, 0, widthPart, heigth);
 			graphics.drawImage(part, width - widthPart - xStart, 0, imgObserver);
 		}
 
 		return result;
+	}
+
+	private int getWidth(int xStart, int xEnd) {
+		int width = xEnd - xStart;
+		if (width == 0) {
+			width ++;
+		}
+		return width;
 	}
 
 	@Override
