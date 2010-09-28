@@ -12,6 +12,8 @@ import java.util.List;
  * @since 08.apr.2010
  */
 public class Constants {
+    
+    public static final String VERSION = "0.001";
 
 	public static final Dimension SIZE = new Dimension(800, 900);
 	public static final int DEFAULT_PREVIEW_WIDTH = 1024;

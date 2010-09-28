@@ -40,6 +40,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		setSize(Constants.SIZE);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(0, 0);
+        setTitle("Version " + Constants.VERSION);
 
 		Panel mainContent = new Panel(new BorderLayout());
 
