@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Constants {
     
-    public static final String VERSION = "0.0011";
+    public static final String VERSION = "0.0012";
 
 	public static final Dimension SIZE = new Dimension(800, 900);
 	public static final int DEFAULT_PREVIEW_WIDTH = 1024;

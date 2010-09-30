@@ -67,7 +67,7 @@ public class Manager {
 			});
 		}
 
-		title += " (size: " + image.getWidth() + "x" + image.getHeight() + ")";
+		title += " (" + image.getWidth() + "x" + image.getHeight() + ")";
 
 		previewFrame.setTitle(title);
 		previewFrame.setVisible(true);

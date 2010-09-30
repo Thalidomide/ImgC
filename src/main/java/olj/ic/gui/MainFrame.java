@@ -34,7 +34,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 	private Panel content;
 
 	private ViewMode viewMode;
-	private File selectedDirectory;
+	private File[] selectedFilesOrDirectory;
 
 	public MainFrame() throws HeadlessException {
 		setSize(Constants.SIZE);
@@ -71,7 +71,9 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 	@Override
 	public void openFolder() {
 		final JFileChooser fileChooser = new JFileChooser("C:\\");
-		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		fileChooser.setMultiSelectionEnabled(true);
+//		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
 		int action = fileChooser.showDialog(MainFrame.this, "Open");
 
@@ -80,7 +82,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 				@Override
 				public void executeWork() {
-					selectedDirectory = fileChooser.getSelectedFile();
+					selectedFilesOrDirectory = fileChooser.getSelectedFiles();
 					loadImagesFromDirectory();
 				}
 			};
@@ -91,7 +93,14 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 	@Override
 	public void storeImages() {
-		String savePath = selectedDirectory.getAbsolutePath() + "\\" + Manager.get().getEngineSettings().getEngineMode();
+		if (selectedFilesOrDirectory == null || selectedFilesOrDirectory.length == 0) {
+			throw new IllegalStateException("There are not any files selected!");
+		}
+
+		File file = selectedFilesOrDirectory[0];
+		String currentPath = isSelectedDirectory() ? file.getAbsolutePath() : file.getParent();
+
+		String savePath = currentPath + "\\" + Manager.get().getEngineSettings().getEngineMode();
 		if (Manager.get().getEngineSettings().isLeftRightReversed()) {
 			savePath += "Reversed";
 		}
@@ -118,7 +127,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 	@Override
 	public void saveSettings() {
-		if (selectedDirectory != null) {
+		if (selectedFilesOrDirectory != null) {
 			loadImagesFromDirectory();
 		}
 		showMainView();
@@ -130,10 +139,14 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 	}
 
 	private void loadImagesFromDirectory() {
-		File[] files = selectedDirectory.listFiles();
+		File[] files = isSelectedDirectory() ? selectedFilesOrDirectory[0].listFiles() : selectedFilesOrDirectory;
 		List<ImageUnit> imageUnits = ImageEngineUtil.getImageUnits(files);
 		resultPanel.setPairs(imageUnits);
 		buttonPanel.setSaveButtonEnabled(!imageUnits.isEmpty());
+	}
+
+	private boolean isSelectedDirectory() {
+		return selectedFilesOrDirectory.length == 1 && selectedFilesOrDirectory[0].isDirectory();
 	}
 
 	private void showMainView() {
