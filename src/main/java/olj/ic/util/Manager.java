@@ -1,8 +1,8 @@
 package olj.ic.util;
 
-import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 import olj.ic.engine.EngineSettings;
@@ -56,7 +56,7 @@ public class Manager {
 		this.messageListener = messageListener;
 	}
 
-	public void showPreview(Image image, String title) {
+	public void showPreview(BufferedImage image, String title) {
 		if (previewFrame == null) {
 			previewFrame = new PreviewFrame();
 			previewFrame.addWindowListener(new WindowAdapter() {
@@ -66,6 +66,8 @@ public class Manager {
 				}
 			});
 		}
+
+		title += " (size: " + image.getWidth() + "x" + image.getHeight() + ")";
 
 		previewFrame.setTitle(title);
 		previewFrame.setVisible(true);
