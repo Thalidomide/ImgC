@@ -12,13 +12,14 @@ import olj.ic.engine.ImageEngineUtil;
 import olj.ic.engine.ImageSaverLoader;
 import olj.ic.entities.ImageUnit;
 import olj.ic.gui.components.Panel;
+import olj.ic.util.Constants;
+import olj.ic.util.Manager;
+import olj.ic.util.Util;
 import olj.ic.work.MessageListener;
 import olj.ic.work.StatusListener;
 import olj.ic.work.StatusType;
 import olj.ic.work.Work;
 import olj.ic.work.WorkHandler;
-import olj.ic.util.Constants;
-import olj.ic.util.Manager;
 import olj.ic.work.WorkPackage;
 
 /**
@@ -40,7 +41,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		setSize(Constants.SIZE);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(0, 0);
-        setTitle("Version " + Constants.VERSION);
+        setTitle("Image compositor (v " + Constants.VERSION + ")");
 
 		Panel mainContent = new Panel(new BorderLayout());
 
@@ -70,10 +71,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 	@Override
 	public void openFolder() {
-		final JFileChooser fileChooser = new JFileChooser("C:\\");
-		fileChooser.setMultiSelectionEnabled(true);
-//		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		final JFileChooser fileChooser = Util.getImageFileChooser();
 
 		int action = fileChooser.showDialog(MainFrame.this, "Open");
 

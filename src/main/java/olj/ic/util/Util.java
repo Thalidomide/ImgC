@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
 
 /**
  * @author Olav Jensen
@@ -53,6 +55,25 @@ public class Util {
 
 	public static boolean stringsAreDifferent(String s1, String s2) {
 		return s1 == null && s2 != null || (s1 != null && !s1.equals(s2));
+	}
+
+	public static JFileChooser getImageFileChooser() {
+		JFileChooser fileChooser = new JFileChooser("C:\\");
+		fileChooser.setFileFilter(new FileFilter() {
+			@Override
+			public boolean accept(File f) {
+				return f.isDirectory() || isValidImageFile(f.getName());
+			}
+
+			@Override
+			public String getDescription() {
+				return "Supported image files";
+			}
+		});
+		fileChooser.setMultiSelectionEnabled(true);
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+		return fileChooser;
 	}
 
 	private static String getTrimmedName(String name, List<String> postfixes) {
