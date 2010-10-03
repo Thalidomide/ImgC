@@ -1,5 +1,7 @@
 package olj.ic.gui.util;
 
+import java.awt.GridBagConstraints;
+
 /**
  * @author Olav Jensen
  * @since May 4, 2010
@@ -21,4 +23,12 @@ public class GuiUtil {
 		}
 		return res;
 	}
+
+    public static GridBagConstraints getDefaultGridBagConstraints() {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        constraints.weightx = 1;
+        return constraints;
+    }
 }
