@@ -26,7 +26,8 @@ import olj.ic.work.WorkPackage;
  * @author Olav Jensen
  * @since 08.apr.2010
  */
-public class MainFrame extends JFrame implements ButtonPanelListener, StatusListener, MessageListener, SettingsListener {
+public class MainFrame extends JFrame implements ButtonPanelListener, StatusListener, MessageListener, SettingsListener,
+		ImageTransferHandlerListener {
 
 	private StatusPanel statusPanel;
 	private ImageUnitsResultPanel resultPanel;
@@ -42,6 +43,8 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(0, 0);
         setTitle("Image compositor (v " + Constants.VERSION + ")");
+
+		setTransferHandler(new ImageTransferHandler(this));
 
 		Panel mainContent = new Panel(new BorderLayout());
 
@@ -76,17 +79,22 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		int action = fileChooser.showDialog(MainFrame.this, "Open");
 
 		if (action == JFileChooser.APPROVE_OPTION) {
-			Work work = new Work() {
-
-				@Override
-				public void executeWork() {
-					selectedFilesOrDirectory = fileChooser.getSelectedFiles();
-					loadImagesFromDirectory();
-				}
-			};
-
-			Manager.get().getWorkHandler().doWork(new WorkPackage("Scan folder for images", work));
+			openFiles(fileChooser.getSelectedFiles());
 		}
+	}
+
+	@Override
+	public void openFiles(final File[] files) {
+		Work work = new Work() {
+
+			@Override
+			public void executeWork() {
+				selectedFilesOrDirectory = files;
+				loadImagesFromDirectory();
+			}
+		};
+
+		Manager.get().getWorkHandler().doWork(new WorkPackage("Scan folder for images", work));
 	}
 
 	@Override
