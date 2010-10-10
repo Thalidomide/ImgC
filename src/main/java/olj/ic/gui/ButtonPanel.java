@@ -27,6 +27,8 @@ public class ButtonPanel extends Panel {
 		this.listener = listener;
 		setBackground(Constants.BACKGROUND);
 
+		//TODO Add label displaying mode..
+
 		add(getOpenFolder());
 		add(getSaveImages());
 		add(getSettings());

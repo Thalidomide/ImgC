@@ -46,6 +46,16 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 
 		setTransferHandler(new ImageTransferHandler(this));
 
+		setupGui();
+
+		Manager.get().setMessageListener(this);
+		Manager.get().setStatusHandler(new WorkHandler(this));
+		Manager.get().setImageObserver(this);
+
+		setVisible(true);
+	}
+
+	private void setupGui() {
 		Panel mainContent = new Panel(new BorderLayout());
 
 		statusPanel = new StatusPanel();
@@ -64,12 +74,6 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		content.add(settingsContent, ViewMode.settings.name());
 
 		showMainView();
-
-		Manager.get().setMessageListener(this);
-		Manager.get().setStatusHandler(new WorkHandler(this));
-		Manager.get().setImageObserver(this);
-
-		setVisible(true);
 	}
 
 	@Override
