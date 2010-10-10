@@ -17,3 +17,4 @@ TAGS
 *.iml          
 .idea
 *iml
+.idea\*
