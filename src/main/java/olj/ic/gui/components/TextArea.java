@@ -15,4 +15,13 @@ public class TextArea extends JTextArea {
 		setForeground(Constants.FONT);
 		setBackground(Constants.BACKGROUND_INPUT);
 	}
+
+    public void appendText(String text) {
+         String oldValue = getText();
+
+        if (!"".equals(oldValue)) {
+            oldValue += "\n";
+        }
+        setText(oldValue + text);
+    }
 }

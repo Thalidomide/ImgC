@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JScrollPane;
@@ -23,8 +25,7 @@ public class StatusPanel extends Panel {
 
 	private StatusLabelPanel statusLabelPanel;
 	private TextArea statusArea;
-	private JScrollPane scrollPane;
-	private Calendar calendar = new GregorianCalendar();
+    private Calendar calendar = new GregorianCalendar();
 
 	public StatusPanel() {
 		super(new BorderLayout());
@@ -33,12 +34,17 @@ public class StatusPanel extends Panel {
 		statusArea = new TextArea();
 		statusArea.setEditable(false);
 
-		scrollPane = new JScrollPane(statusArea);
+        JScrollPane scrollPane = new JScrollPane(statusArea);
 		scrollPane.setPreferredSize(new Dimension(300, 100));
-		scrollPane.getVerticalScrollBar().setAutoscrolls(true);
 
-		add(statusLabelPanel, BorderLayout.SOUTH);
-		add(scrollPane, BorderLayout.CENTER);
+        scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+            }});
+
+        add(scrollPane, BorderLayout.CENTER);
+        add(statusLabelPanel, BorderLayout.SOUTH);
 
 		updateStatus(StatusType.idle, null);
 	}
@@ -48,11 +54,7 @@ public class StatusPanel extends Panel {
 		String sTimestamp = timeVal(Calendar.HOUR_OF_DAY, 2) + ":" + timeVal(Calendar.MINUTE, 2) + ":"
 				+ timeVal(Calendar.SECOND, 2) + ":" + timeVal(Calendar.MILLISECOND, 3);
 
-		String oldValue = statusArea.getText();
-		if (!"".equals(oldValue)) {
-			oldValue = "\n" + oldValue;
-		}
-		statusArea.setText("<" + sTimestamp + "> " + message + oldValue);
+		statusArea.appendText("<" + sTimestamp + "> " + message);
 	}
 
 	private String timeVal(int value, int length) {

@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
-import javax.swing.border.BevelBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -25,11 +24,13 @@ import olj.ic.work.WorkPackage;
  * @author Olav Jensen
  * @since 09.apr.2010
  */
-public class ImageUnitPanel extends Panel {
+public class ImageUnitPanel {
 
 	private final ImageUnit unit;
 	private final Color background;
 	private CheckBox useImage;
+    private Panel contentCheckBox;
+    private Panel content;
 	private List<Label> labels = new ArrayList<Label>();
 
 	public ImageUnitPanel(final ImageUnit unit, Color background, int index) {
@@ -37,15 +38,17 @@ public class ImageUnitPanel extends Panel {
 		this.unit = unit;
 		this.background = background;
 
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		setBackground(background);
-		setBorder(new BevelBorder(BevelBorder.LOWERED));
+        contentCheckBox = getPanel();
+        content = getPanel();
+
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
 		addTitle(index);
+        addUseImage();
 		addImages();
 	}
 
-	public void addImageIfActive(List<ImageUnit> units) {
+    public void addImageIfActive(List<ImageUnit> units) {
 		if (useImage.isSelected()) {
 			units.add(unit);
 		}
@@ -62,7 +65,11 @@ public class ImageUnitPanel extends Panel {
 			}
 		}));
 
-		useImage = new CheckBox();
+		content.add(titleLabel);
+	}
+
+    private void addUseImage() {
+        useImage = new CheckBox();
 		useImage.setBackground(background);
 		useImage.setSelected(true);
 		useImage.addChangeListener(new ChangeListener() {
@@ -71,14 +78,8 @@ public class ImageUnitPanel extends Panel {
 				updateLabels();
 			}
 		});
-
-		Panel titlePanel = getPanel();
-
-		titlePanel.add(useImage);
-		titlePanel.add(titleLabel);
-
-		add(titlePanel);
-	}
+        contentCheckBox.add(useImage);
+    }
 
 	private void addImages() {
 		for (final ImageComponent component : unit.getComponents()) {
@@ -95,15 +96,24 @@ public class ImageUnitPanel extends Panel {
 		}
 	}
 
-	private void addWrapped(Component component) {
+    public Panel getUseImage() {
+        return contentCheckBox;
+    }
+
+    public Panel getContent() {
+        return content;
+    }
+
+    private void addWrapped(Component component) {
 		Panel panel = getPanel();
 		panel.add(component);
-		add(panel);
+		content.add(panel);
 	}
 
 	private Panel getPanel() {
 		Panel panel = new Panel();
 		panel.setBackground(background);
+
 		return panel;
 	}
 

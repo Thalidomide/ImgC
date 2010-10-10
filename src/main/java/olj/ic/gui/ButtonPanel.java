@@ -46,7 +46,7 @@ public class ButtonPanel extends Panel {
 	}
 
 	private JButton getOpenFolder() {
-		openFolder = new Button("Open folder");
+		openFolder = new Button("Open files/folder");
 		openFolder.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {

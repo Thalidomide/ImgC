@@ -59,6 +59,7 @@ public class Util {
 
 	public static JFileChooser getImageFileChooser() {
 		JFileChooser fileChooser = new JFileChooser("C:\\");
+        fileChooser.setDialogTitle("Select images or folder containing images");
 		fileChooser.setFileFilter(new FileFilter() {
 			@Override
 			public boolean accept(File f) {
@@ -67,7 +68,7 @@ public class Util {
 
 			@Override
 			public String getDescription() {
-				return "Supported image files";
+				return "Supported image files or folder";
 			}
 		});
 		fileChooser.setMultiSelectionEnabled(true);
