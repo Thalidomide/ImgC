@@ -42,7 +42,7 @@ public class MainFrame extends JFrame implements ButtonPanelListener, StatusList
 		setSize(Constants.SIZE);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(0, 0);
-        setTitle("Image compositor (v " + Constants.VERSION + ")");
+        setTitle("Image merger (v " + Constants.VERSION + ")");
 
 		setTransferHandler(new ImageTransferHandler(this));
 
