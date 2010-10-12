@@ -1,5 +1,6 @@
 package olj.ic.gui;
 
+import java.awt.Adjustable;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -26,22 +27,17 @@ public class StatusPanel extends Panel {
 	private StatusLabelPanel statusLabelPanel;
 	private TextArea statusArea;
     private Calendar calendar = new GregorianCalendar();
+    private JScrollPane scrollPane;
 
-	public StatusPanel() {
+    public StatusPanel() {
 		super(new BorderLayout());
 
 		statusLabelPanel = new StatusLabelPanel();
 		statusArea = new TextArea();
 		statusArea.setEditable(false);
 
-        JScrollPane scrollPane = new JScrollPane(statusArea);
+        scrollPane = new JScrollPane(statusArea);
 		scrollPane.setPreferredSize(new Dimension(300, 100));
-
-        scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
-            @Override
-            public void adjustmentValueChanged(AdjustmentEvent e) {
-                e.getAdjustable().setValue(e.getAdjustable().getMaximum());
-            }});
 
         add(scrollPane, BorderLayout.CENTER);
         add(statusLabelPanel, BorderLayout.SOUTH);
@@ -55,9 +51,15 @@ public class StatusPanel extends Panel {
 				+ timeVal(Calendar.SECOND, 2) + ":" + timeVal(Calendar.MILLISECOND, 3);
 
 		statusArea.appendText("<" + sTimestamp + "> " + message);
+        scrollToBottom();
 	}
 
-	private String timeVal(int value, int length) {
+    private void scrollToBottom() {
+        statusArea.validate();
+        scrollPane.getVerticalScrollBar().setValue(Integer.MAX_VALUE);
+    }
+
+    private String timeVal(int value, int length) {
 		return GuiUtil.asString(calendar.get(value), length);
 	}
 
