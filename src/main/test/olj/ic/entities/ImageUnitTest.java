@@ -3,8 +3,6 @@ package olj.ic.entities;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
-import olj.ic.entities.ImageComponent;
-import olj.ic.entities.ImageUnit;
 
 /**
  * @author Olav Jensen

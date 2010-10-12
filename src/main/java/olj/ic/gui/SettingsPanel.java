@@ -10,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.border.BevelBorder;
@@ -72,7 +70,8 @@ public class SettingsPanel extends Panel {
 		settingsContent.add(engineModeSubPanel, BorderLayout.CENTER);
 
 		addCompositeEngineComponents();
-		addManipulateEngineComponents();
+		addRestructureEngineComponents();
+		addManipulatorEngineComponents();
 
 		restoreGui();
 
@@ -167,7 +166,14 @@ public class SettingsPanel extends Panel {
 		engineModeSubPanel.add(compositePanel, EngineMode.composite.name());
 	}
 
-	private void addManipulateEngineComponents() {
+	private void addRestructureEngineComponents() {
+		Panel panel = getSubEnginePanel();
+		panel.add(new Label("Currently there are no specific settings for this mode."));
+
+		engineModeSubPanel.add(panel, EngineMode.restructure.name());
+	}
+
+    private void addManipulatorEngineComponents() {
 		Panel panel = getSubEnginePanel();
 		panel.add(new Label("Currently there are no specific settings for this mode."));
 

@@ -1,21 +1,20 @@
-package olj.ic.engine;
+package olj.ic.engine.modes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import olj.ic.engine.ImageCompositor;
+import junit.framework.TestCase;
 import olj.ic.entities.ImageComponent;
 import olj.ic.entities.ImageUnit;
-import junit.framework.TestCase;
 
 /**
  * @author Olav Jensen
  * @since 09.apr.2010
  */
-public class ImageCompositorTest extends TestCase {
+public class ImageMergerTest extends TestCase {
 
 	public void testGetImagePairs() {
-		ImageCompositor imageCompositor = new ImageCompositor();
+		ImageMerger imageMerger = new ImageMerger();
 
 		List<ImageComponent> components = new ArrayList<ImageComponent>();
 		ImageComponent img1L = new ImageComponent(null, "Image 1", 0);
@@ -30,7 +29,7 @@ public class ImageCompositorTest extends TestCase {
 		components.add(img2L);
 		components.add(img2R);
 
-		List<ImageUnit> units = imageCompositor.getPairs(components);
+		List<ImageUnit> units = imageMerger.getPairs(components);
 
 		assertEquals(2, units.size());
 

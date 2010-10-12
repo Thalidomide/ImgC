@@ -1,4 +1,4 @@
-package olj.ic.engine;
+package olj.ic.engine.modes;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -7,8 +7,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import javax.swing.JButton;
 
+import olj.ic.engine.EngineMode;
+import olj.ic.engine.EngineSettings;
+import olj.ic.engine.modes.util.ImageUtil;
 import olj.ic.entities.ImageComponent;
 import olj.ic.entities.ImageUnit;
 import olj.ic.util.Constants;
@@ -19,7 +21,7 @@ import olj.ic.util.Util;
  * @author Olav Jensen
  * @since 13.mar.2010
  */
-public class ImageCompositor implements ImageEngine {
+public class ImageMerger implements ImageEngine {
 
 	@Override
 	public EngineMode getEngineMode() {

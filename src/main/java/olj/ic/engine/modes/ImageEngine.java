@@ -1,9 +1,10 @@
-package olj.ic.engine;
+package olj.ic.engine.modes;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
 
+import olj.ic.engine.EngineMode;
 import olj.ic.entities.ImageUnit;
 
 /**

@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import olj.ic.engine.modes.ImageEngine;
+import olj.ic.engine.modes.util.ImageUtil;
 import olj.ic.entities.ImageUnit;
 import olj.ic.util.Manager;
 
